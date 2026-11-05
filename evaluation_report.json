@@ -12,7 +12,7 @@
     "total_fields": 972,
     "ground_truth_path": "/Users/tejasrk/ghst/dataset/sample_output.csv",
     "predictions_path": "sample_predictions.csv",
-    "evaluated_at": "2026-11-05T03:49:46.951468+00:00"
+    "evaluated_at": "2026-11-05T04:30:47.153646+00:00"
   },
   "dataset_validation": {
     "missing_case_ids": [],

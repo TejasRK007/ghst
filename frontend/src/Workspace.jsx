@@ -192,7 +192,14 @@ export default function Workspace() {
 
   return <div className="app-shell">
     <header className="top-header">
-      <div><div className="eyebrow">HACKERRANK ORCHESTRATE · OCTOBER 2026</div><h1>Ghost Data Deletion Audit</h1><p>Inspect every supplied request, dataset, policy, activity record, evidence file, and output row.</p></div>
+      <div className="header-brand"><div className="eyebrow"><span aria-hidden="true">🦇</span> HALLOWEEN HACKATHON <span aria-hidden="true">☠️ 🎃</span></div><h1>Ghost Data Deletion Audit</h1><p>Inspect every supplied request, dataset, policy, activity record, evidence file, and output row.</p></div>
+      <div className="halloween-sky" aria-hidden="true">
+        <span className="halloween-moon" />
+        <span className="halloween-bat halloween-bat-one">🦇</span>
+        <span className="halloween-bat halloween-bat-two">🦇</span>
+        <span className="halloween-ghost">👻</span>
+        <img src="./ghost-pumpkin.svg" alt="" />
+      </div>
       <div className={`connection-pill ${health ? 'connected' : 'disconnected'}`}><span />{health ? 'Dataset API connected' : 'Dataset API unavailable'}</div>
     </header>
 

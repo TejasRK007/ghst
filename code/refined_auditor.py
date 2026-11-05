@@ -177,21 +177,35 @@ class RefinedAuditor:
         # 1. Authoritative evidence files
         evidence_ids = self.find_evidence_for_case(email, uid, audit_at, user_tokens)
         
-        # 2. Collect direct observations from authoritative evidence
+        # 2. Collect direct observations from authoritative evidence. When the
+        # same resource appears in several snapshots, select its latest state
+        # at or before audit_at instead of relying on index traversal order.
         case_obs: Dict[str, Observation] = {}
+        case_obs_rank: Dict[str, Tuple[str, str]] = {}
+        normalized_tokens = {str(token).strip().lower() for token in user_tokens if token}
+
+        def observation_matches_subject(observation: Observation) -> bool:
+            return any(
+                value and str(value).strip().lower() in normalized_tokens
+                for value in (observation.user_id, observation.email, observation.name)
+            )
+
+        def store_latest_observation(observation: Observation) -> None:
+            capture = (
+                self.evidence_files.get(observation.evidence_id, {}).get("captured_at", "")
+                or observation.captured_at
+                or ""
+            )
+            key = f"{observation.system_id}::{observation.resource_id}"
+            rank = (capture, observation.evidence_id or "")
+            if key not in case_obs_rank or rank >= case_obs_rank[key]:
+                case_obs[key] = observation
+                case_obs_rank[key] = rank
+
         for eid in evidence_ids:
             for o in self.indexer.all_observations:
-                if o.evidence_id == eid:
-                    is_match = False
-                    if o.email and o.email.lower() in [t.lower() for t in user_tokens if "@" in t]:
-                        is_match = True
-                    elif o.user_id and o.user_id in user_tokens:
-                        is_match = True
-                    elif o.name and o.name.lower() in [t.lower() for t in user_tokens if not "@" in t]:
-                        is_match = True
-                    
-                    if is_match:
-                        case_obs[f"{o.system_id}::{o.resource_id}"] = o
+                if o.evidence_id == eid and observation_matches_subject(o):
+                    store_latest_observation(o)
 
         # 3. Security Audit Record:
         # Check if user has an audit_record in case_obs
@@ -202,8 +216,8 @@ class RefinedAuditor:
                 if o.category == "SECURITY_AUDIT_LOG" or "audit_record" in o.resource_id:
                     cap = self.evidence_files.get(o.evidence_id, {}).get("captured_at", "")
                     cap_dt = datetime.fromisoformat(cap.replace("Z", "")) if cap else None
-                    if cap_dt and cap_dt <= datetime.fromisoformat(audit_at.replace("Z", "")) and ((o.user_id and o.user_id in user_tokens) or (o.email and o.email.lower() in {str(t).lower() for t in user_tokens if "@" in str(t)})):
-                        case_obs[f"{o.system_id}::{o.resource_id}"] = o
+                    if cap_dt and cap_dt <= datetime.fromisoformat(audit_at.replace("Z", "")) and observation_matches_subject(o):
+                        store_latest_observation(o)
                         has_audit_rec = True
 
         # 4. Generate Audit Steps from participant-visible observations only.
