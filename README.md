@@ -42,3 +42,4 @@ The output must use the columns `case_id,deletion_status,steps_json`. Generation
 ## Source files
 
 All CSVs and the evidence manifest/files are read from `dataset/`. `sample_output.csv` is shown as a supplied dataset reference; it is not used as the prediction source. The UI's generic CSV viewer exposes all rows and columns with pagination and search.
+# ghst
