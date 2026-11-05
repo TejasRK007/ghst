@@ -2,9 +2,14 @@
 Auditor for Ghostinel Deletion Audit Agent.
 Evaluates cases, determines findings, plans remediation, and generates verified steps.
 """
+import os
+import sys
 from typing import List, Dict, Set, Optional, Tuple, Any
 from datetime import datetime
 import json
+
+# Ensure project root is in sys.path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from code.models import (
     AuditStep, DeletionStatus, Phase,

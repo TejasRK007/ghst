@@ -2,9 +2,15 @@
 Identity Resolver for Ghostinel.
 Maps current and historical identifiers across user_identities.csv and user_audit_log.csv.
 """
+import os
+import sys
 import csv
 import hashlib
 from typing import Dict, Optional, Set
+
+# Ensure project root is in sys.path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 from code.models import UserIdentity
 
 

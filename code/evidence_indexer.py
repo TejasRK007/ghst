@@ -9,6 +9,7 @@ Accurately indexes all 94 evidence files:
 - 11 PNG Images (extracted via cached Gemini OCR)
 """
 import os
+import sys
 import glob
 import json
 import csv
@@ -17,23 +18,11 @@ from typing import Dict, List, Set, Optional, Any
 from dataclasses import dataclass
 import pypdf
 
+# Ensure project root is in sys.path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from code.models import Observation
 from code.identity_resolver import IdentityResolver, UserIdentity
-
-
-@dataclass
-class Observation:
-    evidence_id: str
-    file_path: str
-    captured_at: str
-    system_id: str
-    resource_id: str
-    user_id: Optional[str] = None
-    email: Optional[str] = None
-    phone: Optional[str] = None
-    name: Optional[str] = None
-    status: str = ""       # ABSENT, PRESENT, REDACTED, ANONYMIZED, ACTIVE, DISABLED, BLOCKED
-    category: str = ""     # USER_PROFILE, SECURITY_AUDIT_LOG, etc.
-    raw_info: str = ""
 
 
 class EvidenceIndexer:
@@ -108,11 +97,120 @@ class EvidenceIndexer:
         self._index_handovers()
         self._index_service_resource_exports()
         self._index_snapshot_bundles()
+        self._index_generic_record_manifests()
         self._index_all_logs()
         self._index_sql_databases()
         self._index_pdfs()
         self._index_images()
         self._index_analytics_and_export_records()
+        self._index_identity_link_activities()
+
+    def _index_generic_record_manifests(self):
+        """Index participant-facing manifest exports with a records[] schema."""
+        category_map = {
+            "USER_PROFILE": ("account_service", "USER_PROFILE"),
+            "SEARCH_INDEX_ENTRY": ("search_service", "SEARCH_INDEX_ENTRY"),
+            "ANALYTICS_PROFILE": ("analytics_platform", "ANALYTICS_PROFILE"),
+            "DATA_FLOW": ("integration_service", "DATA_FLOW"),
+            "SECURITY_AUDIT_LOG": ("security_service", "SECURITY_AUDIT_LOG"),
+            "SUPPORT_MESSAGE": ("support_platform", "SUPPORT_MESSAGE"),
+            "SUPPORT_ATTACHMENT": ("support_platform", "SUPPORT_ATTACHMENT"),
+            "USER_EXPORT": ("export_service", "USER_EXPORT"),
+            "BACKUP_ARCHIVE": ("backup_service", "BACKUP_ARCHIVE"),
+            "ACCOUNT_TOMBSTONE": ("identity_service", "ACCOUNT_TOMBSTONE"),
+            "MARKETING_PROFILE": ("marketing_platform", "MARKETING_PROFILE"),
+        }
+        for fpath in glob.glob(os.path.join(self.dataset_dir, "evidence/records/*.json")):
+            ev_id = self._get_ev_id(fpath)
+            captured_at = self._get_captured_at(ev_id)
+            try:
+                with open(fpath, mode="r", encoding="utf-8", errors="ignore") as source:
+                    data = json.load(source)
+            except (OSError, json.JSONDecodeError):
+                continue
+            records = data.get("records") if isinstance(data, dict) else None
+            if not isinstance(records, list):
+                continue
+            for record in records:
+                if not isinstance(record, dict):
+                    continue
+                record_type = str(record.get("record_type") or "").upper()
+                if record_type not in category_map:
+                    continue
+                system_id, category = category_map[record_type]
+                subject = str(record.get("subject_reference") or "").strip()
+                email = subject if "@" in subject else record.get("email")
+                user_id = subject if subject.startswith("user_") else record.get("user_id")
+                raw_status = str(record.get("result") or record.get("status") or "").upper()
+                if category == "USER_PROFILE":
+                    status = "ABSENT" if raw_status in {"NOT_FOUND", "ABSENT", "DELETED"} else "PRESENT"
+                elif category == "SEARCH_INDEX_ENTRY":
+                    status = "ABSENT" if raw_status in {"NOT_FOUND", "ABSENT", "MISS"} else "PRESENT"
+                elif category == "ANALYTICS_PROFILE":
+                    status = "ANONYMIZED" if raw_status in {"ANONYMIZED", "REDACTED"} else "IDENTIFIABLE"
+                elif category == "DATA_FLOW":
+                    status = "DISABLED" if raw_status in {"DISABLED", "INACTIVE", "OFF"} else "ACTIVE"
+                elif category == "BACKUP_ARCHIVE":
+                    status = "BLOCKED" if raw_status in {"BLOCKED", "DENIED", "NOT_ALLOWED"} else "RESTORE_RISK"
+                elif category in {"SUPPORT_MESSAGE", "SUPPORT_ATTACHMENT", "ACCOUNT_TOMBSTONE"}:
+                    status = "REDACTED" if raw_status in {"REDACTED", "ANONYMIZED"} else "IDENTIFIABLE"
+                elif category == "USER_EXPORT":
+                    status = "ABSENT" if raw_status in {"NOT_FOUND", "ABSENT", "EXPIRED", "DELETED"} else "PRESENT"
+                else:
+                    status = "PRESENT"
+                resource_id = str(record.get("resource_id") or "").strip()
+                if not resource_id:
+                    continue
+                self.add_obs(Observation(
+                    evidence_id=ev_id,
+                    file_path=fpath,
+                    captured_at=captured_at or str(record.get("recorded_at") or ""),
+                    system_id=system_id,
+                    resource_id=resource_id,
+                    user_id=user_id,
+                    email=email,
+                    status=status,
+                    category=category,
+                    raw_info=json.dumps(record, ensure_ascii=False, sort_keys=True),
+                ))
+
+    def _index_identity_link_activities(self):
+        """Index explicit data-catalog identity links as participant-facing evidence."""
+        activity_path = os.path.join(self.dataset_dir, "system_activity.csv")
+        if not os.path.isfile(activity_path):
+            return
+        with open(activity_path, mode="r", encoding="utf-8", errors="ignore") as source:
+            for row in csv.DictReader(source):
+                if row.get("event_type") != "LINK_RESOURCE_IDENTITY":
+                    continue
+                details = row.get("details", "")
+                email_match = re.search(r"[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}", details, re.I)
+                user_match = re.search(r"\buser_[0-9]+\b", details)
+                resource_id = (row.get("resource_id") or "").strip()
+                target_system = (row.get("target_system") or "").strip()
+                if not resource_id or not (email_match or user_match):
+                    continue
+                # Catalog links for marketing profiles identify a policy-scoped
+                # resource, while attachment links are accepted only when the
+                # catalog explicitly confirms exclusive ownership. Generic links
+                # do not prove the live state of other resource types.
+                attachment_link = target_system == "object_storage" and "confirmed" in details.lower()
+                marketing_link = target_system == "marketing_platform" and "linked" in details.lower()
+                if not (attachment_link or marketing_link):
+                    continue
+                is_attachment = target_system == "object_storage"
+                self.add_obs(Observation(
+                    evidence_id=row.get("activity_id", ""),
+                    file_path=activity_path,
+                    captured_at=row.get("event_time", ""),
+                    system_id=target_system,
+                    resource_id=resource_id,
+                    user_id=user_match.group(0) if user_match else None,
+                    email=email_match.group(0) if email_match else None,
+                    status="PRESENT",
+                    category="SUPPORT_ATTACHMENT" if is_attachment else "MARKETING_PROFILE",
+                    raw_info=details,
+                ))
 
     def _index_handovers(self):
         for fpath in glob.glob(os.path.join(self.dataset_dir, "evidence/records/*handover*.txt")):
@@ -385,7 +483,10 @@ class EvidenceIndexer:
                     if not line:
                         continue
                     
-                    tid_match = re.search(r"trace_id=[\"']?([a-zA-Z0-9_-]+)[\"']?", line)
+                    tid_match = re.search(
+                        r"(?:trace_id|requestId)=[\\\"']?([a-zA-Z0-9_-]+)[\\\"']?",
+                        line,
+                    ) or re.search(r"(?:^|[\s|])(tr-[a-zA-Z0-9_-]+)(?=[\s|])", line)
                     if not tid_match and "{" in line:
                         try:
                             d = json.loads(line[line.find("{"):])
@@ -405,14 +506,14 @@ class EvidenceIndexer:
                         
                         # Extract any fields from this line
                         keys = [
-                            "service", "logger", "resource_id", "lookup_key", "subject_key",
+                            "service", "logger", "function", "resource_id", "lookup_key", "subject_key",
                             "subject_ref", "subject_reference", "customer_reference",
                             "correlation_key", "matched_value", "user_id", "email",
                             "event", "http_status", "rows", "marker_found", "retention_until",
                             "eligible", "deletion_block", "enabled", "result", "attempt"
                         ]
                         for key in keys:
-                            m = re.search(rf"{key}=[\"']?([^\"'\s,]+)[\"']?", line)
+                            m = re.search(rf"{key}=[\\\"']*([^\\\"'\s,|]+)", line)
                             if m:
                                 c[key] = m.group(1)
                     else:
@@ -691,29 +792,46 @@ class EvidenceIndexer:
                 except:
                     continue
                 
-                for line in text.split("\n"):
-                    if "|" in line:
-                        m_em = re.search(r"([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)", line)
-                        m_rid = re.search(r"(backup_[0-9]+|account_[0-9]+|search_[0-9]+|support_[0-9]+|data_flow_[0-9]+)", line)
-                        if m_em and m_rid:
-                            rid = m_rid.group(1)
-                            em = m_em.group(1)
-                            sys_id = "backup_service" if "backup" in rid else (
-                                "account_service" if "account" in rid else (
-                                    "search_service" if "search" in rid else "support_platform"
-                                )
-                            )
-                            cat = "BACKUP_ARCHIVE" if "backup" in rid else (
-                                "USER_PROFILE" if "account" in rid else (
-                                    "SEARCH_INDEX_ENTRY" if "search" in rid else "SUPPORT_MESSAGE"
-                                )
-                            )
-                            status = "RESTORE_RISK" if "backup" in rid else "PRESENT"
-                            self.add_obs(Observation(
-                                evidence_id=ev_id, file_path=base_png, captured_at=captured_at,
-                                system_id=sys_id, resource_id=rid,
-                                email=em, status=status, category=cat, raw_info=line
-                            ))
+                resource_re = re.compile(r"\b(backup_[0-9]+|account_[0-9]+|search_[0-9]+|support_[0-9]+|data_flow_[0-9]+|export_[0-9]+|analytics_[0-9]+)\b")
+                email_re = re.compile(r"[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+")
+                resource_matches = list(resource_re.finditer(text))
+                email_matches = list(email_re.finditer(text))
+                candidates = {}
+                for i, resource_match in enumerate(resource_matches):
+                    rid = resource_match.group(1)
+                    nearest_email = min(email_matches, key=lambda m: abs(m.start() - resource_match.start()), default=None)
+                    if not nearest_email or abs(nearest_email.start() - resource_match.start()) > 1600:
+                        continue
+                    em = nearest_email.group(0)
+                    left = resource_matches[i - 1].start() if i else max(0, resource_match.start() - 1200)
+                    right = resource_matches[i + 1].start() if i + 1 < len(resource_matches) else min(len(text), resource_match.end() + 1200)
+                    context = text[left:right]
+                    if "backup" in rid:
+                        sys_id, cat, status = "backup_service", "BACKUP_ARCHIVE", "RESTORE_RISK"
+                    elif "data_flow" in rid:
+                        sys_id, cat = "integration_service", "DATA_FLOW"
+                        status = "DISABLED" if re.search(r"disabled|inactive|enabled\s*[:=]\s*false", context, re.I) else "ACTIVE"
+                    elif "export" in rid:
+                        sys_id, cat, status = "export_service", "USER_EXPORT", "PRESENT"
+                    elif "analytics" in rid:
+                        sys_id, cat, status = "analytics_platform", "ANALYTICS_PROFILE", "IDENTIFIABLE"
+                    elif "account" in rid:
+                        sys_id, cat = "account_service", "USER_PROFILE"
+                        status = "ABSENT" if re.search(r"404|rows\s*[:=]\s*0|absent", context, re.I) else "PRESENT"
+                    elif "search" in rid:
+                        sys_id, cat = "search_service", "SEARCH_INDEX_ENTRY"
+                        status = "ABSENT" if re.search(r"miss|no\s+hits|rows\s*[:=]\s*0", context, re.I) else "PRESENT"
+                    else:
+                        sys_id, cat, status = "support_platform", "SUPPORT_MESSAGE", "IDENTIFIABLE"
+                    distance = abs(nearest_email.start() - resource_match.start())
+                    if rid not in candidates or distance < candidates[rid][0]:
+                        candidates[rid] = (distance, em, sys_id, cat, status, context[:1600])
+                for rid, (_, em, sys_id, cat, status, context) in candidates.items():
+                    self.add_obs(Observation(
+                        evidence_id=ev_id, file_path=base_png, captured_at=captured_at,
+                        system_id=sys_id, resource_id=rid,
+                        email=em, status=status, category=cat, raw_info=context
+                    ))
 
     def _index_analytics_and_export_records(self):
         for fpath in glob.glob(os.path.join(self.dataset_dir, "evidence/records/*analytics*.json")):

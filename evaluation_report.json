@@ -1,0 +1,2922 @@
+{
+  "summary": {
+    "total_cases": 32,
+    "status_accuracy_pct": 100.0,
+    "sequence_accuracy_pct": 34.375,
+    "field_accuracy_pct": 83.64197530864197,
+    "status_matches": 32,
+    "sequence_matches": 11,
+    "total_gt_steps": 193,
+    "total_pred_steps": 166,
+    "field_matches": 813,
+    "total_fields": 972,
+    "ground_truth_path": "/Users/tejasrk/ghst/dataset/sample_output.csv",
+    "predictions_path": "sample_predictions.csv",
+    "evaluated_at": "2026-11-05T03:49:46.951468+00:00"
+  },
+  "dataset_validation": {
+    "missing_case_ids": [],
+    "extra_case_ids": [],
+    "ground_truth_total_rows": 32,
+    "predictions_total_rows": 32
+  },
+  "field_level_mismatches_summary": {
+    "phase": 3,
+    "operation": 36,
+    "system_id": 42,
+    "resource_id": 42,
+    "state": 34,
+    "evidence_id": 2,
+    "total_fields_evaluated": 972,
+    "field_matches": 813
+  },
+  "per_case_comparisons": {
+    "case_01": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 1,
+      "pred_steps": 0
+    },
+    "case_02": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 1,
+      "pred_steps": 0
+    },
+    "case_03": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 3,
+      "pred_steps": 2
+    },
+    "case_04": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 2,
+      "pred_steps": 0
+    },
+    "case_05": {
+      "status_match": true,
+      "seq_match": true,
+      "gt_steps": 3,
+      "pred_steps": 3
+    },
+    "case_06": {
+      "status_match": true,
+      "seq_match": true,
+      "gt_steps": 4,
+      "pred_steps": 4
+    },
+    "case_07": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 4,
+      "pred_steps": 7
+    },
+    "case_08": {
+      "status_match": true,
+      "seq_match": true,
+      "gt_steps": 4,
+      "pred_steps": 4
+    },
+    "case_09": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 5,
+      "pred_steps": 3
+    },
+    "case_10": {
+      "status_match": true,
+      "seq_match": true,
+      "gt_steps": 4,
+      "pred_steps": 4
+    },
+    "case_11": {
+      "status_match": true,
+      "seq_match": true,
+      "gt_steps": 14,
+      "pred_steps": 14
+    },
+    "case_12": {
+      "status_match": true,
+      "seq_match": true,
+      "gt_steps": 5,
+      "pred_steps": 5
+    },
+    "case_13": {
+      "status_match": true,
+      "seq_match": true,
+      "gt_steps": 8,
+      "pred_steps": 8
+    },
+    "case_14": {
+      "status_match": true,
+      "seq_match": true,
+      "gt_steps": 5,
+      "pred_steps": 5
+    },
+    "case_15": {
+      "status_match": true,
+      "seq_match": true,
+      "gt_steps": 5,
+      "pred_steps": 5
+    },
+    "case_16": {
+      "status_match": true,
+      "seq_match": true,
+      "gt_steps": 7,
+      "pred_steps": 7
+    },
+    "case_17": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 5,
+      "pred_steps": 6
+    },
+    "case_18": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 14,
+      "pred_steps": 12
+    },
+    "case_19": {
+      "status_match": true,
+      "seq_match": true,
+      "gt_steps": 8,
+      "pred_steps": 8
+    },
+    "case_20": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 8,
+      "pred_steps": 6
+    },
+    "case_21": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 3,
+      "pred_steps": 1
+    },
+    "case_22": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 8,
+      "pred_steps": 7
+    },
+    "case_23": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 8,
+      "pred_steps": 6
+    },
+    "case_24": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 7,
+      "pred_steps": 6
+    },
+    "case_25": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 3,
+      "pred_steps": 1
+    },
+    "case_26": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 6,
+      "pred_steps": 4
+    },
+    "case_27": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 6,
+      "pred_steps": 4
+    },
+    "case_28": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 6,
+      "pred_steps": 4
+    },
+    "case_29": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 14,
+      "pred_steps": 12
+    },
+    "case_30": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 14,
+      "pred_steps": 12
+    },
+    "case_31": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 3,
+      "pred_steps": 2
+    },
+    "case_32": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 5,
+      "pred_steps": 4
+    }
+  },
+  "sequence_mismatches": [
+    {
+      "case_id": "case_01",
+      "expected_status": "COMPLETE",
+      "predicted_status": "COMPLETE",
+      "expected_step_count": 1,
+      "predicted_step_count": 0,
+      "first_mismatching_step": 1,
+      "mismatching_fields": [
+        "MISSING_STEP"
+      ],
+      "expected_step_content": {
+        "evidence_id": "evidence_54",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "phase": "VERIFICATION",
+        "resource_id": "account_001",
+        "state": "ABSENT",
+        "step_no": 1,
+        "system_id": "account_service"
+      },
+      "predicted_step_content": null,
+      "missing_steps": [
+        {
+          "evidence_id": "evidence_54",
+          "operation": "VERIFY_RECORD_ABSENT",
+          "phase": "VERIFICATION",
+          "resource_id": "account_001",
+          "state": "ABSENT",
+          "step_no": 1,
+          "system_id": "account_service"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_02",
+      "expected_status": "COMPLETE",
+      "predicted_status": "COMPLETE",
+      "expected_step_count": 1,
+      "predicted_step_count": 0,
+      "first_mismatching_step": 1,
+      "mismatching_fields": [
+        "MISSING_STEP"
+      ],
+      "expected_step_content": {
+        "evidence_id": "evidence_54",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "phase": "VERIFICATION",
+        "resource_id": "account_002",
+        "state": "ABSENT",
+        "step_no": 1,
+        "system_id": "account_service"
+      },
+      "predicted_step_content": null,
+      "missing_steps": [
+        {
+          "evidence_id": "evidence_54",
+          "operation": "VERIFY_RECORD_ABSENT",
+          "phase": "VERIFICATION",
+          "resource_id": "account_002",
+          "state": "ABSENT",
+          "step_no": 1,
+          "system_id": "account_service"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_03",
+      "expected_status": "COMPLETE",
+      "predicted_status": "COMPLETE",
+      "expected_step_count": 3,
+      "predicted_step_count": 2,
+      "first_mismatching_step": 3,
+      "mismatching_fields": [
+        "MISSING_STEP"
+      ],
+      "expected_step_content": {
+        "step_no": 3,
+        "phase": "VERIFICATION",
+        "system_id": "analytics_platform",
+        "resource_id": "analytics_9406",
+        "operation": "VERIFY_RECORD_ANONYMIZED",
+        "state": "ANONYMIZED",
+        "evidence_id": "evidence_94"
+      },
+      "predicted_step_content": null,
+      "missing_steps": [
+        {
+          "step_no": 3,
+          "phase": "VERIFICATION",
+          "system_id": "analytics_platform",
+          "resource_id": "analytics_9406",
+          "operation": "VERIFY_RECORD_ANONYMIZED",
+          "state": "ANONYMIZED",
+          "evidence_id": "evidence_94"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_04",
+      "expected_status": "COMPLETE",
+      "predicted_status": "COMPLETE",
+      "expected_step_count": 2,
+      "predicted_step_count": 0,
+      "first_mismatching_step": 1,
+      "mismatching_fields": [
+        "MISSING_STEP"
+      ],
+      "expected_step_content": {
+        "evidence_id": "evidence_54",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "phase": "VERIFICATION",
+        "resource_id": "account_004",
+        "state": "ABSENT",
+        "step_no": 1,
+        "system_id": "account_service"
+      },
+      "predicted_step_content": null,
+      "missing_steps": [
+        {
+          "evidence_id": "evidence_54",
+          "operation": "VERIFY_RECORD_ABSENT",
+          "phase": "VERIFICATION",
+          "resource_id": "account_004",
+          "state": "ABSENT",
+          "step_no": 1,
+          "system_id": "account_service"
+        },
+        {
+          "evidence_id": "evidence_56",
+          "operation": "VERIFY_RECORD_ANONYMIZED",
+          "phase": "VERIFICATION",
+          "resource_id": "analytics_901",
+          "state": "ANONYMIZED",
+          "step_no": 2,
+          "system_id": "analytics_platform"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_07",
+      "expected_status": "INCOMPLETE",
+      "predicted_status": "INCOMPLETE",
+      "expected_step_count": 4,
+      "predicted_step_count": 7,
+      "first_mismatching_step": 1,
+      "mismatching_fields": [
+        "system_id",
+        "resource_id",
+        "evidence_id"
+      ],
+      "expected_step_content": {
+        "evidence_id": "evidence_58",
+        "operation": "REPORT_REMAINING_RECORD",
+        "phase": "FINDING",
+        "resource_id": "support_001",
+        "state": "PRESENT",
+        "step_no": 1,
+        "system_id": "support_platform"
+      },
+      "predicted_step_content": {
+        "step_no": 1,
+        "phase": "FINDING",
+        "system_id": "object_storage",
+        "resource_id": "object_19",
+        "operation": "REPORT_REMAINING_RECORD",
+        "state": "PRESENT",
+        "evidence_id": "activity_4007"
+      },
+      "missing_steps": [],
+      "extra_steps": [
+        {
+          "step_no": 5,
+          "phase": "VERIFICATION",
+          "system_id": "account_service",
+          "resource_id": "account_007",
+          "operation": "VERIFY_RECORD_ABSENT",
+          "state": "ABSENT",
+          "evidence_id": ""
+        },
+        {
+          "step_no": 6,
+          "phase": "VERIFICATION",
+          "system_id": "object_storage",
+          "resource_id": "object_19",
+          "operation": "VERIFY_RECORD_ABSENT",
+          "state": "ABSENT",
+          "evidence_id": ""
+        },
+        {
+          "step_no": 7,
+          "phase": "VERIFICATION",
+          "system_id": "support_platform",
+          "resource_id": "support_001",
+          "operation": "VERIFY_RECORD_ABSENT",
+          "state": "ABSENT",
+          "evidence_id": ""
+        }
+      ]
+    },
+    {
+      "case_id": "case_09",
+      "expected_status": "INCOMPLETE",
+      "predicted_status": "INCOMPLETE",
+      "expected_step_count": 5,
+      "predicted_step_count": 3,
+      "first_mismatching_step": 3,
+      "mismatching_fields": [
+        "operation",
+        "system_id",
+        "resource_id",
+        "state"
+      ],
+      "expected_step_content": {
+        "step_no": 3,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_3960",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "predicted_step_content": {
+        "step_no": 3,
+        "phase": "VERIFICATION",
+        "system_id": "backup_service",
+        "resource_id": "backup_4978",
+        "operation": "VERIFY_RESTORE_BLOCKED",
+        "state": "BLOCKED",
+        "evidence_id": ""
+      },
+      "missing_steps": [
+        {
+          "step_no": 4,
+          "phase": "VERIFICATION",
+          "system_id": "security_service",
+          "resource_id": "audit_record_4902",
+          "operation": "VERIFY_RECORD_PRESENT",
+          "state": "PRESENT",
+          "evidence_id": ""
+        },
+        {
+          "step_no": 5,
+          "phase": "VERIFICATION",
+          "system_id": "backup_service",
+          "resource_id": "backup_4978",
+          "operation": "VERIFY_RESTORE_BLOCKED",
+          "state": "BLOCKED",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_17",
+      "expected_status": "INCOMPLETE",
+      "predicted_status": "INCOMPLETE",
+      "expected_step_count": 5,
+      "predicted_step_count": 6,
+      "first_mismatching_step": 4,
+      "mismatching_fields": [
+        "operation",
+        "system_id",
+        "resource_id",
+        "state"
+      ],
+      "expected_step_content": {
+        "step_no": 4,
+        "phase": "VERIFICATION",
+        "system_id": "security_service",
+        "resource_id": "audit_record_1797",
+        "operation": "VERIFY_RECORD_PRESENT",
+        "state": "PRESENT",
+        "evidence_id": ""
+      },
+      "predicted_step_content": {
+        "step_no": 4,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_6523",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "missing_steps": [],
+      "extra_steps": [
+        {
+          "step_no": 6,
+          "phase": "VERIFICATION",
+          "system_id": "backup_service",
+          "resource_id": "backup_3245",
+          "operation": "VERIFY_RESTORE_BLOCKED",
+          "state": "BLOCKED",
+          "evidence_id": ""
+        }
+      ]
+    },
+    {
+      "case_id": "case_18",
+      "expected_status": "INCOMPLETE",
+      "predicted_status": "INCOMPLETE",
+      "expected_step_count": 14,
+      "predicted_step_count": 12,
+      "first_mismatching_step": 9,
+      "mismatching_fields": [
+        "system_id",
+        "resource_id"
+      ],
+      "expected_step_content": {
+        "step_no": 9,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_5521",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "predicted_step_content": {
+        "step_no": 9,
+        "phase": "VERIFICATION",
+        "system_id": "search_service",
+        "resource_id": "search_4013",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "missing_steps": [
+        {
+          "step_no": 13,
+          "phase": "VERIFICATION",
+          "system_id": "analytics_platform",
+          "resource_id": "analytics_037",
+          "operation": "VERIFY_RECORD_ANONYMIZED",
+          "state": "ANONYMIZED",
+          "evidence_id": ""
+        },
+        {
+          "step_no": 14,
+          "phase": "VERIFICATION",
+          "system_id": "integration_service",
+          "resource_id": "data_flow_4890",
+          "operation": "VERIFY_DATA_FLOW_DISABLED",
+          "state": "DISABLED",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_20",
+      "expected_status": "INCOMPLETE",
+      "predicted_status": "INCOMPLETE",
+      "expected_step_count": 8,
+      "predicted_step_count": 6,
+      "first_mismatching_step": 5,
+      "mismatching_fields": [
+        "system_id",
+        "resource_id"
+      ],
+      "expected_step_content": {
+        "step_no": 5,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_5037",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "predicted_step_content": {
+        "step_no": 5,
+        "phase": "VERIFICATION",
+        "system_id": "search_service",
+        "resource_id": "search_4262",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "missing_steps": [
+        {
+          "step_no": 7,
+          "phase": "VERIFICATION",
+          "system_id": "security_service",
+          "resource_id": "audit_record_5569",
+          "operation": "VERIFY_RECORD_PRESENT",
+          "state": "PRESENT",
+          "evidence_id": ""
+        },
+        {
+          "step_no": 8,
+          "phase": "VERIFICATION",
+          "system_id": "integration_service",
+          "resource_id": "data_flow_1770",
+          "operation": "VERIFY_DATA_FLOW_DISABLED",
+          "state": "DISABLED",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_21",
+      "expected_status": "COMPLETE",
+      "predicted_status": "COMPLETE",
+      "expected_step_count": 3,
+      "predicted_step_count": 1,
+      "first_mismatching_step": 1,
+      "mismatching_fields": [
+        "operation",
+        "system_id",
+        "resource_id",
+        "state"
+      ],
+      "expected_step_content": {
+        "step_no": 1,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_6440",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": "evidence_92"
+      },
+      "predicted_step_content": {
+        "step_no": 1,
+        "phase": "VERIFICATION",
+        "system_id": "security_service",
+        "resource_id": "audit_record_3737",
+        "operation": "VERIFY_RECORD_PRESENT",
+        "state": "PRESENT",
+        "evidence_id": "evidence_92"
+      },
+      "missing_steps": [
+        {
+          "step_no": 2,
+          "phase": "VERIFICATION",
+          "system_id": "security_service",
+          "resource_id": "audit_record_3737",
+          "operation": "VERIFY_RECORD_PRESENT",
+          "state": "PRESENT",
+          "evidence_id": "evidence_92"
+        },
+        {
+          "step_no": 3,
+          "phase": "VERIFICATION",
+          "system_id": "analytics_platform",
+          "resource_id": "analytics_5335",
+          "operation": "VERIFY_RECORD_ANONYMIZED",
+          "state": "ANONYMIZED",
+          "evidence_id": "evidence_92"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_22",
+      "expected_status": "INCOMPLETE",
+      "predicted_status": "INCOMPLETE",
+      "expected_step_count": 8,
+      "predicted_step_count": 7,
+      "first_mismatching_step": 5,
+      "mismatching_fields": [
+        "system_id",
+        "resource_id"
+      ],
+      "expected_step_content": {
+        "step_no": 5,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_4990",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "predicted_step_content": {
+        "step_no": 5,
+        "phase": "VERIFICATION",
+        "system_id": "search_service",
+        "resource_id": "search_8911",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "missing_steps": [
+        {
+          "step_no": 8,
+          "phase": "VERIFICATION",
+          "system_id": "analytics_platform",
+          "resource_id": "analytics_4440",
+          "operation": "VERIFY_RECORD_ANONYMIZED",
+          "state": "ANONYMIZED",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_23",
+      "expected_status": "INCOMPLETE",
+      "predicted_status": "INCOMPLETE",
+      "expected_step_count": 8,
+      "predicted_step_count": 6,
+      "first_mismatching_step": 5,
+      "mismatching_fields": [
+        "system_id",
+        "resource_id"
+      ],
+      "expected_step_content": {
+        "step_no": 5,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_410",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "predicted_step_content": {
+        "step_no": 5,
+        "phase": "VERIFICATION",
+        "system_id": "export_service",
+        "resource_id": "export_7364",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "missing_steps": [
+        {
+          "step_no": 7,
+          "phase": "VERIFICATION",
+          "system_id": "search_service",
+          "resource_id": "search_898",
+          "operation": "VERIFY_RECORD_ABSENT",
+          "state": "ABSENT",
+          "evidence_id": ""
+        },
+        {
+          "step_no": 8,
+          "phase": "VERIFICATION",
+          "system_id": "security_service",
+          "resource_id": "audit_record_4128",
+          "operation": "VERIFY_RECORD_PRESENT",
+          "state": "PRESENT",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_24",
+      "expected_status": "INCOMPLETE",
+      "predicted_status": "INCOMPLETE",
+      "expected_step_count": 7,
+      "predicted_step_count": 6,
+      "first_mismatching_step": 7,
+      "mismatching_fields": [
+        "MISSING_STEP"
+      ],
+      "expected_step_content": {
+        "step_no": 7,
+        "phase": "VERIFICATION",
+        "system_id": "security_service",
+        "resource_id": "audit_record_7095",
+        "operation": "VERIFY_RECORD_PRESENT",
+        "state": "PRESENT",
+        "evidence_id": ""
+      },
+      "predicted_step_content": null,
+      "missing_steps": [
+        {
+          "step_no": 7,
+          "phase": "VERIFICATION",
+          "system_id": "security_service",
+          "resource_id": "audit_record_7095",
+          "operation": "VERIFY_RECORD_PRESENT",
+          "state": "PRESENT",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_25",
+      "expected_status": "COMPLETE",
+      "predicted_status": "COMPLETE",
+      "expected_step_count": 3,
+      "predicted_step_count": 1,
+      "first_mismatching_step": 1,
+      "mismatching_fields": [
+        "operation",
+        "system_id",
+        "resource_id",
+        "state"
+      ],
+      "expected_step_content": {
+        "step_no": 1,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_3136",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": "evidence_92"
+      },
+      "predicted_step_content": {
+        "step_no": 1,
+        "phase": "VERIFICATION",
+        "system_id": "security_service",
+        "resource_id": "audit_record_451",
+        "operation": "VERIFY_RECORD_PRESENT",
+        "state": "PRESENT",
+        "evidence_id": "evidence_92"
+      },
+      "missing_steps": [
+        {
+          "step_no": 2,
+          "phase": "VERIFICATION",
+          "system_id": "security_service",
+          "resource_id": "audit_record_451",
+          "operation": "VERIFY_RECORD_PRESENT",
+          "state": "PRESENT",
+          "evidence_id": "evidence_92"
+        },
+        {
+          "step_no": 3,
+          "phase": "VERIFICATION",
+          "system_id": "analytics_platform",
+          "resource_id": "analytics_1895",
+          "operation": "VERIFY_RECORD_ANONYMIZED",
+          "state": "ANONYMIZED",
+          "evidence_id": "evidence_92"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_26",
+      "expected_status": "COMPLETE",
+      "predicted_status": "COMPLETE",
+      "expected_step_count": 6,
+      "predicted_step_count": 4,
+      "first_mismatching_step": 1,
+      "mismatching_fields": [
+        "operation",
+        "system_id",
+        "resource_id",
+        "state"
+      ],
+      "expected_step_content": {
+        "step_no": 1,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_5684",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": "evidence_92"
+      },
+      "predicted_step_content": {
+        "step_no": 1,
+        "phase": "VERIFICATION",
+        "system_id": "security_service",
+        "resource_id": "audit_record_5416",
+        "operation": "VERIFY_RECORD_PRESENT",
+        "state": "PRESENT",
+        "evidence_id": "evidence_92"
+      },
+      "missing_steps": [
+        {
+          "step_no": 5,
+          "phase": "VERIFICATION",
+          "system_id": "integration_service",
+          "resource_id": "data_flow_6244",
+          "operation": "VERIFY_DATA_FLOW_DISABLED",
+          "state": "DISABLED",
+          "evidence_id": "evidence_92"
+        },
+        {
+          "step_no": 6,
+          "phase": "VERIFICATION",
+          "system_id": "backup_service",
+          "resource_id": "backup_3120",
+          "operation": "VERIFY_RESTORE_BLOCKED",
+          "state": "BLOCKED",
+          "evidence_id": "evidence_92"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_27",
+      "expected_status": "COMPLETE",
+      "predicted_status": "COMPLETE",
+      "expected_step_count": 6,
+      "predicted_step_count": 4,
+      "first_mismatching_step": 1,
+      "mismatching_fields": [
+        "operation",
+        "system_id",
+        "resource_id",
+        "state"
+      ],
+      "expected_step_content": {
+        "step_no": 1,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_3866",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": "evidence_92"
+      },
+      "predicted_step_content": {
+        "step_no": 1,
+        "phase": "VERIFICATION",
+        "system_id": "security_service",
+        "resource_id": "audit_record_3830",
+        "operation": "VERIFY_RECORD_PRESENT",
+        "state": "PRESENT",
+        "evidence_id": "evidence_92"
+      },
+      "missing_steps": [
+        {
+          "step_no": 5,
+          "phase": "VERIFICATION",
+          "system_id": "integration_service",
+          "resource_id": "data_flow_2295",
+          "operation": "VERIFY_DATA_FLOW_DISABLED",
+          "state": "DISABLED",
+          "evidence_id": "evidence_92"
+        },
+        {
+          "step_no": 6,
+          "phase": "VERIFICATION",
+          "system_id": "backup_service",
+          "resource_id": "backup_5970",
+          "operation": "VERIFY_RESTORE_BLOCKED",
+          "state": "BLOCKED",
+          "evidence_id": "evidence_92"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_28",
+      "expected_status": "COMPLETE",
+      "predicted_status": "COMPLETE",
+      "expected_step_count": 6,
+      "predicted_step_count": 4,
+      "first_mismatching_step": 1,
+      "mismatching_fields": [
+        "operation",
+        "system_id",
+        "resource_id",
+        "state"
+      ],
+      "expected_step_content": {
+        "step_no": 1,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_5482",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": "evidence_92"
+      },
+      "predicted_step_content": {
+        "step_no": 1,
+        "phase": "VERIFICATION",
+        "system_id": "security_service",
+        "resource_id": "audit_record_9265",
+        "operation": "VERIFY_RECORD_PRESENT",
+        "state": "PRESENT",
+        "evidence_id": "evidence_92"
+      },
+      "missing_steps": [
+        {
+          "step_no": 5,
+          "phase": "VERIFICATION",
+          "system_id": "integration_service",
+          "resource_id": "data_flow_2337",
+          "operation": "VERIFY_DATA_FLOW_DISABLED",
+          "state": "DISABLED",
+          "evidence_id": "evidence_92"
+        },
+        {
+          "step_no": 6,
+          "phase": "VERIFICATION",
+          "system_id": "backup_service",
+          "resource_id": "backup_838",
+          "operation": "VERIFY_RESTORE_BLOCKED",
+          "state": "BLOCKED",
+          "evidence_id": "evidence_92"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_29",
+      "expected_status": "INCOMPLETE",
+      "predicted_status": "INCOMPLETE",
+      "expected_step_count": 14,
+      "predicted_step_count": 12,
+      "first_mismatching_step": 9,
+      "mismatching_fields": [
+        "system_id",
+        "resource_id"
+      ],
+      "expected_step_content": {
+        "step_no": 9,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_7012",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "predicted_step_content": {
+        "step_no": 9,
+        "phase": "VERIFICATION",
+        "system_id": "search_service",
+        "resource_id": "search_1993",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "missing_steps": [
+        {
+          "step_no": 13,
+          "phase": "VERIFICATION",
+          "system_id": "analytics_platform",
+          "resource_id": "analytics_5208",
+          "operation": "VERIFY_RECORD_ANONYMIZED",
+          "state": "ANONYMIZED",
+          "evidence_id": ""
+        },
+        {
+          "step_no": 14,
+          "phase": "VERIFICATION",
+          "system_id": "integration_service",
+          "resource_id": "data_flow_3827",
+          "operation": "VERIFY_DATA_FLOW_DISABLED",
+          "state": "DISABLED",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_30",
+      "expected_status": "INCOMPLETE",
+      "predicted_status": "INCOMPLETE",
+      "expected_step_count": 14,
+      "predicted_step_count": 12,
+      "first_mismatching_step": 9,
+      "mismatching_fields": [
+        "system_id",
+        "resource_id"
+      ],
+      "expected_step_content": {
+        "step_no": 9,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_4163",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "predicted_step_content": {
+        "step_no": 9,
+        "phase": "VERIFICATION",
+        "system_id": "search_service",
+        "resource_id": "search_9359",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "missing_steps": [
+        {
+          "step_no": 13,
+          "phase": "VERIFICATION",
+          "system_id": "analytics_platform",
+          "resource_id": "analytics_3697",
+          "operation": "VERIFY_RECORD_ANONYMIZED",
+          "state": "ANONYMIZED",
+          "evidence_id": ""
+        },
+        {
+          "step_no": 14,
+          "phase": "VERIFICATION",
+          "system_id": "integration_service",
+          "resource_id": "data_flow_8524",
+          "operation": "VERIFY_DATA_FLOW_DISABLED",
+          "state": "DISABLED",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_31",
+      "expected_status": "COMPLETE",
+      "predicted_status": "COMPLETE",
+      "expected_step_count": 3,
+      "predicted_step_count": 2,
+      "first_mismatching_step": 1,
+      "mismatching_fields": [
+        "operation",
+        "system_id",
+        "resource_id",
+        "state"
+      ],
+      "expected_step_content": {
+        "step_no": 1,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_4857",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": "evidence_51"
+      },
+      "predicted_step_content": {
+        "step_no": 1,
+        "phase": "VERIFICATION",
+        "system_id": "security_service",
+        "resource_id": "audit_record_6909",
+        "operation": "VERIFY_RECORD_PRESENT",
+        "state": "PRESENT",
+        "evidence_id": "evidence_51"
+      },
+      "missing_steps": [
+        {
+          "step_no": 3,
+          "phase": "VERIFICATION",
+          "system_id": "identity_service",
+          "resource_id": "tombstone_440",
+          "operation": "VERIFY_RECORD_REDACTED",
+          "state": "REDACTED",
+          "evidence_id": "evidence_51"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_32",
+      "expected_status": "INCOMPLETE",
+      "predicted_status": "INCOMPLETE",
+      "expected_step_count": 5,
+      "predicted_step_count": 4,
+      "first_mismatching_step": 3,
+      "mismatching_fields": [
+        "operation",
+        "system_id",
+        "resource_id",
+        "state"
+      ],
+      "expected_step_content": {
+        "step_no": 3,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_8858",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "predicted_step_content": {
+        "step_no": 3,
+        "phase": "VERIFICATION",
+        "system_id": "security_service",
+        "resource_id": "audit_record_7068",
+        "operation": "VERIFY_RECORD_PRESENT",
+        "state": "PRESENT",
+        "evidence_id": ""
+      },
+      "missing_steps": [
+        {
+          "step_no": 5,
+          "phase": "VERIFICATION",
+          "system_id": "identity_service",
+          "resource_id": "tombstone_9178",
+          "operation": "VERIFY_RECORD_REDACTED",
+          "state": "REDACTED",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    }
+  ],
+  "missing_and_extra_steps": [
+    {
+      "case_id": "case_01",
+      "missing_steps_count": 1,
+      "extra_steps_count": 0,
+      "missing_steps": [
+        {
+          "evidence_id": "evidence_54",
+          "operation": "VERIFY_RECORD_ABSENT",
+          "phase": "VERIFICATION",
+          "resource_id": "account_001",
+          "state": "ABSENT",
+          "step_no": 1,
+          "system_id": "account_service"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_02",
+      "missing_steps_count": 1,
+      "extra_steps_count": 0,
+      "missing_steps": [
+        {
+          "evidence_id": "evidence_54",
+          "operation": "VERIFY_RECORD_ABSENT",
+          "phase": "VERIFICATION",
+          "resource_id": "account_002",
+          "state": "ABSENT",
+          "step_no": 1,
+          "system_id": "account_service"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_03",
+      "missing_steps_count": 1,
+      "extra_steps_count": 0,
+      "missing_steps": [
+        {
+          "step_no": 3,
+          "phase": "VERIFICATION",
+          "system_id": "analytics_platform",
+          "resource_id": "analytics_9406",
+          "operation": "VERIFY_RECORD_ANONYMIZED",
+          "state": "ANONYMIZED",
+          "evidence_id": "evidence_94"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_04",
+      "missing_steps_count": 2,
+      "extra_steps_count": 0,
+      "missing_steps": [
+        {
+          "evidence_id": "evidence_54",
+          "operation": "VERIFY_RECORD_ABSENT",
+          "phase": "VERIFICATION",
+          "resource_id": "account_004",
+          "state": "ABSENT",
+          "step_no": 1,
+          "system_id": "account_service"
+        },
+        {
+          "evidence_id": "evidence_56",
+          "operation": "VERIFY_RECORD_ANONYMIZED",
+          "phase": "VERIFICATION",
+          "resource_id": "analytics_901",
+          "state": "ANONYMIZED",
+          "step_no": 2,
+          "system_id": "analytics_platform"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_07",
+      "missing_steps_count": 0,
+      "extra_steps_count": 3,
+      "missing_steps": [],
+      "extra_steps": [
+        {
+          "step_no": 5,
+          "phase": "VERIFICATION",
+          "system_id": "account_service",
+          "resource_id": "account_007",
+          "operation": "VERIFY_RECORD_ABSENT",
+          "state": "ABSENT",
+          "evidence_id": ""
+        },
+        {
+          "step_no": 6,
+          "phase": "VERIFICATION",
+          "system_id": "object_storage",
+          "resource_id": "object_19",
+          "operation": "VERIFY_RECORD_ABSENT",
+          "state": "ABSENT",
+          "evidence_id": ""
+        },
+        {
+          "step_no": 7,
+          "phase": "VERIFICATION",
+          "system_id": "support_platform",
+          "resource_id": "support_001",
+          "operation": "VERIFY_RECORD_ABSENT",
+          "state": "ABSENT",
+          "evidence_id": ""
+        }
+      ]
+    },
+    {
+      "case_id": "case_09",
+      "missing_steps_count": 2,
+      "extra_steps_count": 0,
+      "missing_steps": [
+        {
+          "step_no": 4,
+          "phase": "VERIFICATION",
+          "system_id": "security_service",
+          "resource_id": "audit_record_4902",
+          "operation": "VERIFY_RECORD_PRESENT",
+          "state": "PRESENT",
+          "evidence_id": ""
+        },
+        {
+          "step_no": 5,
+          "phase": "VERIFICATION",
+          "system_id": "backup_service",
+          "resource_id": "backup_4978",
+          "operation": "VERIFY_RESTORE_BLOCKED",
+          "state": "BLOCKED",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_17",
+      "missing_steps_count": 0,
+      "extra_steps_count": 1,
+      "missing_steps": [],
+      "extra_steps": [
+        {
+          "step_no": 6,
+          "phase": "VERIFICATION",
+          "system_id": "backup_service",
+          "resource_id": "backup_3245",
+          "operation": "VERIFY_RESTORE_BLOCKED",
+          "state": "BLOCKED",
+          "evidence_id": ""
+        }
+      ]
+    },
+    {
+      "case_id": "case_18",
+      "missing_steps_count": 2,
+      "extra_steps_count": 0,
+      "missing_steps": [
+        {
+          "step_no": 13,
+          "phase": "VERIFICATION",
+          "system_id": "analytics_platform",
+          "resource_id": "analytics_037",
+          "operation": "VERIFY_RECORD_ANONYMIZED",
+          "state": "ANONYMIZED",
+          "evidence_id": ""
+        },
+        {
+          "step_no": 14,
+          "phase": "VERIFICATION",
+          "system_id": "integration_service",
+          "resource_id": "data_flow_4890",
+          "operation": "VERIFY_DATA_FLOW_DISABLED",
+          "state": "DISABLED",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_20",
+      "missing_steps_count": 2,
+      "extra_steps_count": 0,
+      "missing_steps": [
+        {
+          "step_no": 7,
+          "phase": "VERIFICATION",
+          "system_id": "security_service",
+          "resource_id": "audit_record_5569",
+          "operation": "VERIFY_RECORD_PRESENT",
+          "state": "PRESENT",
+          "evidence_id": ""
+        },
+        {
+          "step_no": 8,
+          "phase": "VERIFICATION",
+          "system_id": "integration_service",
+          "resource_id": "data_flow_1770",
+          "operation": "VERIFY_DATA_FLOW_DISABLED",
+          "state": "DISABLED",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_21",
+      "missing_steps_count": 2,
+      "extra_steps_count": 0,
+      "missing_steps": [
+        {
+          "step_no": 2,
+          "phase": "VERIFICATION",
+          "system_id": "security_service",
+          "resource_id": "audit_record_3737",
+          "operation": "VERIFY_RECORD_PRESENT",
+          "state": "PRESENT",
+          "evidence_id": "evidence_92"
+        },
+        {
+          "step_no": 3,
+          "phase": "VERIFICATION",
+          "system_id": "analytics_platform",
+          "resource_id": "analytics_5335",
+          "operation": "VERIFY_RECORD_ANONYMIZED",
+          "state": "ANONYMIZED",
+          "evidence_id": "evidence_92"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_22",
+      "missing_steps_count": 1,
+      "extra_steps_count": 0,
+      "missing_steps": [
+        {
+          "step_no": 8,
+          "phase": "VERIFICATION",
+          "system_id": "analytics_platform",
+          "resource_id": "analytics_4440",
+          "operation": "VERIFY_RECORD_ANONYMIZED",
+          "state": "ANONYMIZED",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_23",
+      "missing_steps_count": 2,
+      "extra_steps_count": 0,
+      "missing_steps": [
+        {
+          "step_no": 7,
+          "phase": "VERIFICATION",
+          "system_id": "search_service",
+          "resource_id": "search_898",
+          "operation": "VERIFY_RECORD_ABSENT",
+          "state": "ABSENT",
+          "evidence_id": ""
+        },
+        {
+          "step_no": 8,
+          "phase": "VERIFICATION",
+          "system_id": "security_service",
+          "resource_id": "audit_record_4128",
+          "operation": "VERIFY_RECORD_PRESENT",
+          "state": "PRESENT",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_24",
+      "missing_steps_count": 1,
+      "extra_steps_count": 0,
+      "missing_steps": [
+        {
+          "step_no": 7,
+          "phase": "VERIFICATION",
+          "system_id": "security_service",
+          "resource_id": "audit_record_7095",
+          "operation": "VERIFY_RECORD_PRESENT",
+          "state": "PRESENT",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_25",
+      "missing_steps_count": 2,
+      "extra_steps_count": 0,
+      "missing_steps": [
+        {
+          "step_no": 2,
+          "phase": "VERIFICATION",
+          "system_id": "security_service",
+          "resource_id": "audit_record_451",
+          "operation": "VERIFY_RECORD_PRESENT",
+          "state": "PRESENT",
+          "evidence_id": "evidence_92"
+        },
+        {
+          "step_no": 3,
+          "phase": "VERIFICATION",
+          "system_id": "analytics_platform",
+          "resource_id": "analytics_1895",
+          "operation": "VERIFY_RECORD_ANONYMIZED",
+          "state": "ANONYMIZED",
+          "evidence_id": "evidence_92"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_26",
+      "missing_steps_count": 2,
+      "extra_steps_count": 0,
+      "missing_steps": [
+        {
+          "step_no": 5,
+          "phase": "VERIFICATION",
+          "system_id": "integration_service",
+          "resource_id": "data_flow_6244",
+          "operation": "VERIFY_DATA_FLOW_DISABLED",
+          "state": "DISABLED",
+          "evidence_id": "evidence_92"
+        },
+        {
+          "step_no": 6,
+          "phase": "VERIFICATION",
+          "system_id": "backup_service",
+          "resource_id": "backup_3120",
+          "operation": "VERIFY_RESTORE_BLOCKED",
+          "state": "BLOCKED",
+          "evidence_id": "evidence_92"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_27",
+      "missing_steps_count": 2,
+      "extra_steps_count": 0,
+      "missing_steps": [
+        {
+          "step_no": 5,
+          "phase": "VERIFICATION",
+          "system_id": "integration_service",
+          "resource_id": "data_flow_2295",
+          "operation": "VERIFY_DATA_FLOW_DISABLED",
+          "state": "DISABLED",
+          "evidence_id": "evidence_92"
+        },
+        {
+          "step_no": 6,
+          "phase": "VERIFICATION",
+          "system_id": "backup_service",
+          "resource_id": "backup_5970",
+          "operation": "VERIFY_RESTORE_BLOCKED",
+          "state": "BLOCKED",
+          "evidence_id": "evidence_92"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_28",
+      "missing_steps_count": 2,
+      "extra_steps_count": 0,
+      "missing_steps": [
+        {
+          "step_no": 5,
+          "phase": "VERIFICATION",
+          "system_id": "integration_service",
+          "resource_id": "data_flow_2337",
+          "operation": "VERIFY_DATA_FLOW_DISABLED",
+          "state": "DISABLED",
+          "evidence_id": "evidence_92"
+        },
+        {
+          "step_no": 6,
+          "phase": "VERIFICATION",
+          "system_id": "backup_service",
+          "resource_id": "backup_838",
+          "operation": "VERIFY_RESTORE_BLOCKED",
+          "state": "BLOCKED",
+          "evidence_id": "evidence_92"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_29",
+      "missing_steps_count": 2,
+      "extra_steps_count": 0,
+      "missing_steps": [
+        {
+          "step_no": 13,
+          "phase": "VERIFICATION",
+          "system_id": "analytics_platform",
+          "resource_id": "analytics_5208",
+          "operation": "VERIFY_RECORD_ANONYMIZED",
+          "state": "ANONYMIZED",
+          "evidence_id": ""
+        },
+        {
+          "step_no": 14,
+          "phase": "VERIFICATION",
+          "system_id": "integration_service",
+          "resource_id": "data_flow_3827",
+          "operation": "VERIFY_DATA_FLOW_DISABLED",
+          "state": "DISABLED",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_30",
+      "missing_steps_count": 2,
+      "extra_steps_count": 0,
+      "missing_steps": [
+        {
+          "step_no": 13,
+          "phase": "VERIFICATION",
+          "system_id": "analytics_platform",
+          "resource_id": "analytics_3697",
+          "operation": "VERIFY_RECORD_ANONYMIZED",
+          "state": "ANONYMIZED",
+          "evidence_id": ""
+        },
+        {
+          "step_no": 14,
+          "phase": "VERIFICATION",
+          "system_id": "integration_service",
+          "resource_id": "data_flow_8524",
+          "operation": "VERIFY_DATA_FLOW_DISABLED",
+          "state": "DISABLED",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_31",
+      "missing_steps_count": 1,
+      "extra_steps_count": 0,
+      "missing_steps": [
+        {
+          "step_no": 3,
+          "phase": "VERIFICATION",
+          "system_id": "identity_service",
+          "resource_id": "tombstone_440",
+          "operation": "VERIFY_RECORD_REDACTED",
+          "state": "REDACTED",
+          "evidence_id": "evidence_51"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_32",
+      "missing_steps_count": 1,
+      "extra_steps_count": 0,
+      "missing_steps": [
+        {
+          "step_no": 5,
+          "phase": "VERIFICATION",
+          "system_id": "identity_service",
+          "resource_id": "tombstone_9178",
+          "operation": "VERIFY_RECORD_REDACTED",
+          "state": "REDACTED",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    }
+  ],
+  "failed_cases_diagnostics": [
+    {
+      "case_id": "case_01",
+      "status_match": true,
+      "sequence_match": false,
+      "expected_status": "COMPLETE",
+      "predicted_status": "COMPLETE",
+      "expected_step_count": 1,
+      "predicted_step_count": 0,
+      "first_mismatching_step": 1,
+      "mismatching_fields": [
+        "MISSING_STEP"
+      ],
+      "expected_step_content": {
+        "evidence_id": "evidence_54",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "phase": "VERIFICATION",
+        "resource_id": "account_001",
+        "state": "ABSENT",
+        "step_no": 1,
+        "system_id": "account_service"
+      },
+      "predicted_step_content": null,
+      "missing_steps": [
+        {
+          "evidence_id": "evidence_54",
+          "operation": "VERIFY_RECORD_ABSENT",
+          "phase": "VERIFICATION",
+          "resource_id": "account_001",
+          "state": "ABSENT",
+          "step_no": 1,
+          "system_id": "account_service"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_02",
+      "status_match": true,
+      "sequence_match": false,
+      "expected_status": "COMPLETE",
+      "predicted_status": "COMPLETE",
+      "expected_step_count": 1,
+      "predicted_step_count": 0,
+      "first_mismatching_step": 1,
+      "mismatching_fields": [
+        "MISSING_STEP"
+      ],
+      "expected_step_content": {
+        "evidence_id": "evidence_54",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "phase": "VERIFICATION",
+        "resource_id": "account_002",
+        "state": "ABSENT",
+        "step_no": 1,
+        "system_id": "account_service"
+      },
+      "predicted_step_content": null,
+      "missing_steps": [
+        {
+          "evidence_id": "evidence_54",
+          "operation": "VERIFY_RECORD_ABSENT",
+          "phase": "VERIFICATION",
+          "resource_id": "account_002",
+          "state": "ABSENT",
+          "step_no": 1,
+          "system_id": "account_service"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_03",
+      "status_match": true,
+      "sequence_match": false,
+      "expected_status": "COMPLETE",
+      "predicted_status": "COMPLETE",
+      "expected_step_count": 3,
+      "predicted_step_count": 2,
+      "first_mismatching_step": 3,
+      "mismatching_fields": [
+        "MISSING_STEP"
+      ],
+      "expected_step_content": {
+        "step_no": 3,
+        "phase": "VERIFICATION",
+        "system_id": "analytics_platform",
+        "resource_id": "analytics_9406",
+        "operation": "VERIFY_RECORD_ANONYMIZED",
+        "state": "ANONYMIZED",
+        "evidence_id": "evidence_94"
+      },
+      "predicted_step_content": null,
+      "missing_steps": [
+        {
+          "step_no": 3,
+          "phase": "VERIFICATION",
+          "system_id": "analytics_platform",
+          "resource_id": "analytics_9406",
+          "operation": "VERIFY_RECORD_ANONYMIZED",
+          "state": "ANONYMIZED",
+          "evidence_id": "evidence_94"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_04",
+      "status_match": true,
+      "sequence_match": false,
+      "expected_status": "COMPLETE",
+      "predicted_status": "COMPLETE",
+      "expected_step_count": 2,
+      "predicted_step_count": 0,
+      "first_mismatching_step": 1,
+      "mismatching_fields": [
+        "MISSING_STEP"
+      ],
+      "expected_step_content": {
+        "evidence_id": "evidence_54",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "phase": "VERIFICATION",
+        "resource_id": "account_004",
+        "state": "ABSENT",
+        "step_no": 1,
+        "system_id": "account_service"
+      },
+      "predicted_step_content": null,
+      "missing_steps": [
+        {
+          "evidence_id": "evidence_54",
+          "operation": "VERIFY_RECORD_ABSENT",
+          "phase": "VERIFICATION",
+          "resource_id": "account_004",
+          "state": "ABSENT",
+          "step_no": 1,
+          "system_id": "account_service"
+        },
+        {
+          "evidence_id": "evidence_56",
+          "operation": "VERIFY_RECORD_ANONYMIZED",
+          "phase": "VERIFICATION",
+          "resource_id": "analytics_901",
+          "state": "ANONYMIZED",
+          "step_no": 2,
+          "system_id": "analytics_platform"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_07",
+      "status_match": true,
+      "sequence_match": false,
+      "expected_status": "INCOMPLETE",
+      "predicted_status": "INCOMPLETE",
+      "expected_step_count": 4,
+      "predicted_step_count": 7,
+      "first_mismatching_step": 1,
+      "mismatching_fields": [
+        "system_id",
+        "resource_id",
+        "evidence_id"
+      ],
+      "expected_step_content": {
+        "evidence_id": "evidence_58",
+        "operation": "REPORT_REMAINING_RECORD",
+        "phase": "FINDING",
+        "resource_id": "support_001",
+        "state": "PRESENT",
+        "step_no": 1,
+        "system_id": "support_platform"
+      },
+      "predicted_step_content": {
+        "step_no": 1,
+        "phase": "FINDING",
+        "system_id": "object_storage",
+        "resource_id": "object_19",
+        "operation": "REPORT_REMAINING_RECORD",
+        "state": "PRESENT",
+        "evidence_id": "activity_4007"
+      },
+      "missing_steps": [],
+      "extra_steps": [
+        {
+          "step_no": 5,
+          "phase": "VERIFICATION",
+          "system_id": "account_service",
+          "resource_id": "account_007",
+          "operation": "VERIFY_RECORD_ABSENT",
+          "state": "ABSENT",
+          "evidence_id": ""
+        },
+        {
+          "step_no": 6,
+          "phase": "VERIFICATION",
+          "system_id": "object_storage",
+          "resource_id": "object_19",
+          "operation": "VERIFY_RECORD_ABSENT",
+          "state": "ABSENT",
+          "evidence_id": ""
+        },
+        {
+          "step_no": 7,
+          "phase": "VERIFICATION",
+          "system_id": "support_platform",
+          "resource_id": "support_001",
+          "operation": "VERIFY_RECORD_ABSENT",
+          "state": "ABSENT",
+          "evidence_id": ""
+        }
+      ]
+    },
+    {
+      "case_id": "case_09",
+      "status_match": true,
+      "sequence_match": false,
+      "expected_status": "INCOMPLETE",
+      "predicted_status": "INCOMPLETE",
+      "expected_step_count": 5,
+      "predicted_step_count": 3,
+      "first_mismatching_step": 3,
+      "mismatching_fields": [
+        "operation",
+        "system_id",
+        "resource_id",
+        "state"
+      ],
+      "expected_step_content": {
+        "step_no": 3,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_3960",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "predicted_step_content": {
+        "step_no": 3,
+        "phase": "VERIFICATION",
+        "system_id": "backup_service",
+        "resource_id": "backup_4978",
+        "operation": "VERIFY_RESTORE_BLOCKED",
+        "state": "BLOCKED",
+        "evidence_id": ""
+      },
+      "missing_steps": [
+        {
+          "step_no": 4,
+          "phase": "VERIFICATION",
+          "system_id": "security_service",
+          "resource_id": "audit_record_4902",
+          "operation": "VERIFY_RECORD_PRESENT",
+          "state": "PRESENT",
+          "evidence_id": ""
+        },
+        {
+          "step_no": 5,
+          "phase": "VERIFICATION",
+          "system_id": "backup_service",
+          "resource_id": "backup_4978",
+          "operation": "VERIFY_RESTORE_BLOCKED",
+          "state": "BLOCKED",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_17",
+      "status_match": true,
+      "sequence_match": false,
+      "expected_status": "INCOMPLETE",
+      "predicted_status": "INCOMPLETE",
+      "expected_step_count": 5,
+      "predicted_step_count": 6,
+      "first_mismatching_step": 4,
+      "mismatching_fields": [
+        "operation",
+        "system_id",
+        "resource_id",
+        "state"
+      ],
+      "expected_step_content": {
+        "step_no": 4,
+        "phase": "VERIFICATION",
+        "system_id": "security_service",
+        "resource_id": "audit_record_1797",
+        "operation": "VERIFY_RECORD_PRESENT",
+        "state": "PRESENT",
+        "evidence_id": ""
+      },
+      "predicted_step_content": {
+        "step_no": 4,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_6523",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "missing_steps": [],
+      "extra_steps": [
+        {
+          "step_no": 6,
+          "phase": "VERIFICATION",
+          "system_id": "backup_service",
+          "resource_id": "backup_3245",
+          "operation": "VERIFY_RESTORE_BLOCKED",
+          "state": "BLOCKED",
+          "evidence_id": ""
+        }
+      ]
+    },
+    {
+      "case_id": "case_18",
+      "status_match": true,
+      "sequence_match": false,
+      "expected_status": "INCOMPLETE",
+      "predicted_status": "INCOMPLETE",
+      "expected_step_count": 14,
+      "predicted_step_count": 12,
+      "first_mismatching_step": 9,
+      "mismatching_fields": [
+        "system_id",
+        "resource_id"
+      ],
+      "expected_step_content": {
+        "step_no": 9,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_5521",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "predicted_step_content": {
+        "step_no": 9,
+        "phase": "VERIFICATION",
+        "system_id": "search_service",
+        "resource_id": "search_4013",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "missing_steps": [
+        {
+          "step_no": 13,
+          "phase": "VERIFICATION",
+          "system_id": "analytics_platform",
+          "resource_id": "analytics_037",
+          "operation": "VERIFY_RECORD_ANONYMIZED",
+          "state": "ANONYMIZED",
+          "evidence_id": ""
+        },
+        {
+          "step_no": 14,
+          "phase": "VERIFICATION",
+          "system_id": "integration_service",
+          "resource_id": "data_flow_4890",
+          "operation": "VERIFY_DATA_FLOW_DISABLED",
+          "state": "DISABLED",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_20",
+      "status_match": true,
+      "sequence_match": false,
+      "expected_status": "INCOMPLETE",
+      "predicted_status": "INCOMPLETE",
+      "expected_step_count": 8,
+      "predicted_step_count": 6,
+      "first_mismatching_step": 5,
+      "mismatching_fields": [
+        "system_id",
+        "resource_id"
+      ],
+      "expected_step_content": {
+        "step_no": 5,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_5037",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "predicted_step_content": {
+        "step_no": 5,
+        "phase": "VERIFICATION",
+        "system_id": "search_service",
+        "resource_id": "search_4262",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "missing_steps": [
+        {
+          "step_no": 7,
+          "phase": "VERIFICATION",
+          "system_id": "security_service",
+          "resource_id": "audit_record_5569",
+          "operation": "VERIFY_RECORD_PRESENT",
+          "state": "PRESENT",
+          "evidence_id": ""
+        },
+        {
+          "step_no": 8,
+          "phase": "VERIFICATION",
+          "system_id": "integration_service",
+          "resource_id": "data_flow_1770",
+          "operation": "VERIFY_DATA_FLOW_DISABLED",
+          "state": "DISABLED",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_21",
+      "status_match": true,
+      "sequence_match": false,
+      "expected_status": "COMPLETE",
+      "predicted_status": "COMPLETE",
+      "expected_step_count": 3,
+      "predicted_step_count": 1,
+      "first_mismatching_step": 1,
+      "mismatching_fields": [
+        "operation",
+        "system_id",
+        "resource_id",
+        "state"
+      ],
+      "expected_step_content": {
+        "step_no": 1,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_6440",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": "evidence_92"
+      },
+      "predicted_step_content": {
+        "step_no": 1,
+        "phase": "VERIFICATION",
+        "system_id": "security_service",
+        "resource_id": "audit_record_3737",
+        "operation": "VERIFY_RECORD_PRESENT",
+        "state": "PRESENT",
+        "evidence_id": "evidence_92"
+      },
+      "missing_steps": [
+        {
+          "step_no": 2,
+          "phase": "VERIFICATION",
+          "system_id": "security_service",
+          "resource_id": "audit_record_3737",
+          "operation": "VERIFY_RECORD_PRESENT",
+          "state": "PRESENT",
+          "evidence_id": "evidence_92"
+        },
+        {
+          "step_no": 3,
+          "phase": "VERIFICATION",
+          "system_id": "analytics_platform",
+          "resource_id": "analytics_5335",
+          "operation": "VERIFY_RECORD_ANONYMIZED",
+          "state": "ANONYMIZED",
+          "evidence_id": "evidence_92"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_22",
+      "status_match": true,
+      "sequence_match": false,
+      "expected_status": "INCOMPLETE",
+      "predicted_status": "INCOMPLETE",
+      "expected_step_count": 8,
+      "predicted_step_count": 7,
+      "first_mismatching_step": 5,
+      "mismatching_fields": [
+        "system_id",
+        "resource_id"
+      ],
+      "expected_step_content": {
+        "step_no": 5,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_4990",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "predicted_step_content": {
+        "step_no": 5,
+        "phase": "VERIFICATION",
+        "system_id": "search_service",
+        "resource_id": "search_8911",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "missing_steps": [
+        {
+          "step_no": 8,
+          "phase": "VERIFICATION",
+          "system_id": "analytics_platform",
+          "resource_id": "analytics_4440",
+          "operation": "VERIFY_RECORD_ANONYMIZED",
+          "state": "ANONYMIZED",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_23",
+      "status_match": true,
+      "sequence_match": false,
+      "expected_status": "INCOMPLETE",
+      "predicted_status": "INCOMPLETE",
+      "expected_step_count": 8,
+      "predicted_step_count": 6,
+      "first_mismatching_step": 5,
+      "mismatching_fields": [
+        "system_id",
+        "resource_id"
+      ],
+      "expected_step_content": {
+        "step_no": 5,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_410",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "predicted_step_content": {
+        "step_no": 5,
+        "phase": "VERIFICATION",
+        "system_id": "export_service",
+        "resource_id": "export_7364",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "missing_steps": [
+        {
+          "step_no": 7,
+          "phase": "VERIFICATION",
+          "system_id": "search_service",
+          "resource_id": "search_898",
+          "operation": "VERIFY_RECORD_ABSENT",
+          "state": "ABSENT",
+          "evidence_id": ""
+        },
+        {
+          "step_no": 8,
+          "phase": "VERIFICATION",
+          "system_id": "security_service",
+          "resource_id": "audit_record_4128",
+          "operation": "VERIFY_RECORD_PRESENT",
+          "state": "PRESENT",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_24",
+      "status_match": true,
+      "sequence_match": false,
+      "expected_status": "INCOMPLETE",
+      "predicted_status": "INCOMPLETE",
+      "expected_step_count": 7,
+      "predicted_step_count": 6,
+      "first_mismatching_step": 7,
+      "mismatching_fields": [
+        "MISSING_STEP"
+      ],
+      "expected_step_content": {
+        "step_no": 7,
+        "phase": "VERIFICATION",
+        "system_id": "security_service",
+        "resource_id": "audit_record_7095",
+        "operation": "VERIFY_RECORD_PRESENT",
+        "state": "PRESENT",
+        "evidence_id": ""
+      },
+      "predicted_step_content": null,
+      "missing_steps": [
+        {
+          "step_no": 7,
+          "phase": "VERIFICATION",
+          "system_id": "security_service",
+          "resource_id": "audit_record_7095",
+          "operation": "VERIFY_RECORD_PRESENT",
+          "state": "PRESENT",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_25",
+      "status_match": true,
+      "sequence_match": false,
+      "expected_status": "COMPLETE",
+      "predicted_status": "COMPLETE",
+      "expected_step_count": 3,
+      "predicted_step_count": 1,
+      "first_mismatching_step": 1,
+      "mismatching_fields": [
+        "operation",
+        "system_id",
+        "resource_id",
+        "state"
+      ],
+      "expected_step_content": {
+        "step_no": 1,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_3136",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": "evidence_92"
+      },
+      "predicted_step_content": {
+        "step_no": 1,
+        "phase": "VERIFICATION",
+        "system_id": "security_service",
+        "resource_id": "audit_record_451",
+        "operation": "VERIFY_RECORD_PRESENT",
+        "state": "PRESENT",
+        "evidence_id": "evidence_92"
+      },
+      "missing_steps": [
+        {
+          "step_no": 2,
+          "phase": "VERIFICATION",
+          "system_id": "security_service",
+          "resource_id": "audit_record_451",
+          "operation": "VERIFY_RECORD_PRESENT",
+          "state": "PRESENT",
+          "evidence_id": "evidence_92"
+        },
+        {
+          "step_no": 3,
+          "phase": "VERIFICATION",
+          "system_id": "analytics_platform",
+          "resource_id": "analytics_1895",
+          "operation": "VERIFY_RECORD_ANONYMIZED",
+          "state": "ANONYMIZED",
+          "evidence_id": "evidence_92"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_26",
+      "status_match": true,
+      "sequence_match": false,
+      "expected_status": "COMPLETE",
+      "predicted_status": "COMPLETE",
+      "expected_step_count": 6,
+      "predicted_step_count": 4,
+      "first_mismatching_step": 1,
+      "mismatching_fields": [
+        "operation",
+        "system_id",
+        "resource_id",
+        "state"
+      ],
+      "expected_step_content": {
+        "step_no": 1,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_5684",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": "evidence_92"
+      },
+      "predicted_step_content": {
+        "step_no": 1,
+        "phase": "VERIFICATION",
+        "system_id": "security_service",
+        "resource_id": "audit_record_5416",
+        "operation": "VERIFY_RECORD_PRESENT",
+        "state": "PRESENT",
+        "evidence_id": "evidence_92"
+      },
+      "missing_steps": [
+        {
+          "step_no": 5,
+          "phase": "VERIFICATION",
+          "system_id": "integration_service",
+          "resource_id": "data_flow_6244",
+          "operation": "VERIFY_DATA_FLOW_DISABLED",
+          "state": "DISABLED",
+          "evidence_id": "evidence_92"
+        },
+        {
+          "step_no": 6,
+          "phase": "VERIFICATION",
+          "system_id": "backup_service",
+          "resource_id": "backup_3120",
+          "operation": "VERIFY_RESTORE_BLOCKED",
+          "state": "BLOCKED",
+          "evidence_id": "evidence_92"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_27",
+      "status_match": true,
+      "sequence_match": false,
+      "expected_status": "COMPLETE",
+      "predicted_status": "COMPLETE",
+      "expected_step_count": 6,
+      "predicted_step_count": 4,
+      "first_mismatching_step": 1,
+      "mismatching_fields": [
+        "operation",
+        "system_id",
+        "resource_id",
+        "state"
+      ],
+      "expected_step_content": {
+        "step_no": 1,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_3866",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": "evidence_92"
+      },
+      "predicted_step_content": {
+        "step_no": 1,
+        "phase": "VERIFICATION",
+        "system_id": "security_service",
+        "resource_id": "audit_record_3830",
+        "operation": "VERIFY_RECORD_PRESENT",
+        "state": "PRESENT",
+        "evidence_id": "evidence_92"
+      },
+      "missing_steps": [
+        {
+          "step_no": 5,
+          "phase": "VERIFICATION",
+          "system_id": "integration_service",
+          "resource_id": "data_flow_2295",
+          "operation": "VERIFY_DATA_FLOW_DISABLED",
+          "state": "DISABLED",
+          "evidence_id": "evidence_92"
+        },
+        {
+          "step_no": 6,
+          "phase": "VERIFICATION",
+          "system_id": "backup_service",
+          "resource_id": "backup_5970",
+          "operation": "VERIFY_RESTORE_BLOCKED",
+          "state": "BLOCKED",
+          "evidence_id": "evidence_92"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_28",
+      "status_match": true,
+      "sequence_match": false,
+      "expected_status": "COMPLETE",
+      "predicted_status": "COMPLETE",
+      "expected_step_count": 6,
+      "predicted_step_count": 4,
+      "first_mismatching_step": 1,
+      "mismatching_fields": [
+        "operation",
+        "system_id",
+        "resource_id",
+        "state"
+      ],
+      "expected_step_content": {
+        "step_no": 1,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_5482",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": "evidence_92"
+      },
+      "predicted_step_content": {
+        "step_no": 1,
+        "phase": "VERIFICATION",
+        "system_id": "security_service",
+        "resource_id": "audit_record_9265",
+        "operation": "VERIFY_RECORD_PRESENT",
+        "state": "PRESENT",
+        "evidence_id": "evidence_92"
+      },
+      "missing_steps": [
+        {
+          "step_no": 5,
+          "phase": "VERIFICATION",
+          "system_id": "integration_service",
+          "resource_id": "data_flow_2337",
+          "operation": "VERIFY_DATA_FLOW_DISABLED",
+          "state": "DISABLED",
+          "evidence_id": "evidence_92"
+        },
+        {
+          "step_no": 6,
+          "phase": "VERIFICATION",
+          "system_id": "backup_service",
+          "resource_id": "backup_838",
+          "operation": "VERIFY_RESTORE_BLOCKED",
+          "state": "BLOCKED",
+          "evidence_id": "evidence_92"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_29",
+      "status_match": true,
+      "sequence_match": false,
+      "expected_status": "INCOMPLETE",
+      "predicted_status": "INCOMPLETE",
+      "expected_step_count": 14,
+      "predicted_step_count": 12,
+      "first_mismatching_step": 9,
+      "mismatching_fields": [
+        "system_id",
+        "resource_id"
+      ],
+      "expected_step_content": {
+        "step_no": 9,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_7012",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "predicted_step_content": {
+        "step_no": 9,
+        "phase": "VERIFICATION",
+        "system_id": "search_service",
+        "resource_id": "search_1993",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "missing_steps": [
+        {
+          "step_no": 13,
+          "phase": "VERIFICATION",
+          "system_id": "analytics_platform",
+          "resource_id": "analytics_5208",
+          "operation": "VERIFY_RECORD_ANONYMIZED",
+          "state": "ANONYMIZED",
+          "evidence_id": ""
+        },
+        {
+          "step_no": 14,
+          "phase": "VERIFICATION",
+          "system_id": "integration_service",
+          "resource_id": "data_flow_3827",
+          "operation": "VERIFY_DATA_FLOW_DISABLED",
+          "state": "DISABLED",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_30",
+      "status_match": true,
+      "sequence_match": false,
+      "expected_status": "INCOMPLETE",
+      "predicted_status": "INCOMPLETE",
+      "expected_step_count": 14,
+      "predicted_step_count": 12,
+      "first_mismatching_step": 9,
+      "mismatching_fields": [
+        "system_id",
+        "resource_id"
+      ],
+      "expected_step_content": {
+        "step_no": 9,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_4163",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "predicted_step_content": {
+        "step_no": 9,
+        "phase": "VERIFICATION",
+        "system_id": "search_service",
+        "resource_id": "search_9359",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "missing_steps": [
+        {
+          "step_no": 13,
+          "phase": "VERIFICATION",
+          "system_id": "analytics_platform",
+          "resource_id": "analytics_3697",
+          "operation": "VERIFY_RECORD_ANONYMIZED",
+          "state": "ANONYMIZED",
+          "evidence_id": ""
+        },
+        {
+          "step_no": 14,
+          "phase": "VERIFICATION",
+          "system_id": "integration_service",
+          "resource_id": "data_flow_8524",
+          "operation": "VERIFY_DATA_FLOW_DISABLED",
+          "state": "DISABLED",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_31",
+      "status_match": true,
+      "sequence_match": false,
+      "expected_status": "COMPLETE",
+      "predicted_status": "COMPLETE",
+      "expected_step_count": 3,
+      "predicted_step_count": 2,
+      "first_mismatching_step": 1,
+      "mismatching_fields": [
+        "operation",
+        "system_id",
+        "resource_id",
+        "state"
+      ],
+      "expected_step_content": {
+        "step_no": 1,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_4857",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": "evidence_51"
+      },
+      "predicted_step_content": {
+        "step_no": 1,
+        "phase": "VERIFICATION",
+        "system_id": "security_service",
+        "resource_id": "audit_record_6909",
+        "operation": "VERIFY_RECORD_PRESENT",
+        "state": "PRESENT",
+        "evidence_id": "evidence_51"
+      },
+      "missing_steps": [
+        {
+          "step_no": 3,
+          "phase": "VERIFICATION",
+          "system_id": "identity_service",
+          "resource_id": "tombstone_440",
+          "operation": "VERIFY_RECORD_REDACTED",
+          "state": "REDACTED",
+          "evidence_id": "evidence_51"
+        }
+      ],
+      "extra_steps": []
+    },
+    {
+      "case_id": "case_32",
+      "status_match": true,
+      "sequence_match": false,
+      "expected_status": "INCOMPLETE",
+      "predicted_status": "INCOMPLETE",
+      "expected_step_count": 5,
+      "predicted_step_count": 4,
+      "first_mismatching_step": 3,
+      "mismatching_fields": [
+        "operation",
+        "system_id",
+        "resource_id",
+        "state"
+      ],
+      "expected_step_content": {
+        "step_no": 3,
+        "phase": "VERIFICATION",
+        "system_id": "account_service",
+        "resource_id": "account_8858",
+        "operation": "VERIFY_RECORD_ABSENT",
+        "state": "ABSENT",
+        "evidence_id": ""
+      },
+      "predicted_step_content": {
+        "step_no": 3,
+        "phase": "VERIFICATION",
+        "system_id": "security_service",
+        "resource_id": "audit_record_7068",
+        "operation": "VERIFY_RECORD_PRESENT",
+        "state": "PRESENT",
+        "evidence_id": ""
+      },
+      "missing_steps": [
+        {
+          "step_no": 5,
+          "phase": "VERIFICATION",
+          "system_id": "identity_service",
+          "resource_id": "tombstone_9178",
+          "operation": "VERIFY_RECORD_REDACTED",
+          "state": "REDACTED",
+          "evidence_id": ""
+        }
+      ],
+      "extra_steps": []
+    }
+  ],
+  "total_cases": 32,
+  "status_accuracy_pct": 100.0,
+  "sequence_accuracy_pct": 34.375,
+  "field_accuracy_pct": 83.64197530864197,
+  "status_matches": 32,
+  "step_exact_matches": 11,
+  "case_details": {
+    "case_01": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 1,
+      "pred_steps": 0
+    },
+    "case_02": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 1,
+      "pred_steps": 0
+    },
+    "case_03": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 3,
+      "pred_steps": 2
+    },
+    "case_04": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 2,
+      "pred_steps": 0
+    },
+    "case_05": {
+      "status_match": true,
+      "seq_match": true,
+      "gt_steps": 3,
+      "pred_steps": 3
+    },
+    "case_06": {
+      "status_match": true,
+      "seq_match": true,
+      "gt_steps": 4,
+      "pred_steps": 4
+    },
+    "case_07": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 4,
+      "pred_steps": 7
+    },
+    "case_08": {
+      "status_match": true,
+      "seq_match": true,
+      "gt_steps": 4,
+      "pred_steps": 4
+    },
+    "case_09": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 5,
+      "pred_steps": 3
+    },
+    "case_10": {
+      "status_match": true,
+      "seq_match": true,
+      "gt_steps": 4,
+      "pred_steps": 4
+    },
+    "case_11": {
+      "status_match": true,
+      "seq_match": true,
+      "gt_steps": 14,
+      "pred_steps": 14
+    },
+    "case_12": {
+      "status_match": true,
+      "seq_match": true,
+      "gt_steps": 5,
+      "pred_steps": 5
+    },
+    "case_13": {
+      "status_match": true,
+      "seq_match": true,
+      "gt_steps": 8,
+      "pred_steps": 8
+    },
+    "case_14": {
+      "status_match": true,
+      "seq_match": true,
+      "gt_steps": 5,
+      "pred_steps": 5
+    },
+    "case_15": {
+      "status_match": true,
+      "seq_match": true,
+      "gt_steps": 5,
+      "pred_steps": 5
+    },
+    "case_16": {
+      "status_match": true,
+      "seq_match": true,
+      "gt_steps": 7,
+      "pred_steps": 7
+    },
+    "case_17": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 5,
+      "pred_steps": 6
+    },
+    "case_18": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 14,
+      "pred_steps": 12
+    },
+    "case_19": {
+      "status_match": true,
+      "seq_match": true,
+      "gt_steps": 8,
+      "pred_steps": 8
+    },
+    "case_20": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 8,
+      "pred_steps": 6
+    },
+    "case_21": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 3,
+      "pred_steps": 1
+    },
+    "case_22": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 8,
+      "pred_steps": 7
+    },
+    "case_23": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 8,
+      "pred_steps": 6
+    },
+    "case_24": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 7,
+      "pred_steps": 6
+    },
+    "case_25": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 3,
+      "pred_steps": 1
+    },
+    "case_26": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 6,
+      "pred_steps": 4
+    },
+    "case_27": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 6,
+      "pred_steps": 4
+    },
+    "case_28": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 6,
+      "pred_steps": 4
+    },
+    "case_29": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 14,
+      "pred_steps": 12
+    },
+    "case_30": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 14,
+      "pred_steps": 12
+    },
+    "case_31": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 3,
+      "pred_steps": 2
+    },
+    "case_32": {
+      "status_match": true,
+      "seq_match": false,
+      "gt_steps": 5,
+      "pred_steps": 4
+    }
+  }
+}

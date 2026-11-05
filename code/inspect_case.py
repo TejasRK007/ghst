@@ -51,7 +51,10 @@ def inspect(case_id_arg: str = None):
         if len(sys.argv) > 1:
             case_id_arg = sys.argv[1].strip()
         else:
-            case_id_arg = input("\nEnter case_id to inspect (e.g. case_01, case_11, case_33, case_533): ").strip()
+            try:
+                case_id_arg = input("\nEnter case_id to inspect (e.g. case_01, case_11, case_33, case_533): ").strip()
+            except (EOFError, KeyboardInterrupt):
+                case_id_arg = "case_01"
 
     if not case_id_arg:
         case_id_arg = "case_01"

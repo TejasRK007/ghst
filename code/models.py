@@ -65,6 +65,22 @@ OPERATION_DEFAULT_STATE = {
 
 
 @dataclass
+class Observation:
+    evidence_id: str
+    file_path: str
+    captured_at: str
+    system_id: str
+    resource_id: str
+    user_id: Optional[str] = None
+    email: Optional[str] = None
+    phone: Optional[str] = None
+    name: Optional[str] = None
+    status: str = ""       # ABSENT, PRESENT, REDACTED, ANONYMIZED, ACTIVE, DISABLED, BLOCKED
+    category: str = ""     # USER_PROFILE, SECURITY_AUDIT_LOG, etc.
+    raw_info: str = ""
+
+
+@dataclass
 class AuditStep:
     step_no: int
     phase: str

@@ -3,11 +3,16 @@ Refined Auditor for Ghostinel.
 Accurately maps cases to their audit-time evidence snapshots and extracts exact user resources.
 """
 import os
+import sys
 import glob
 import json
 import csv
+import re
 from datetime import datetime
 from typing import Dict, List, Set, Optional, Tuple, Any
+
+# Ensure project root is in sys.path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from code.models import (
     AuditStep, DeletionStatus, Phase,
@@ -33,6 +38,80 @@ class RefinedAuditor:
                 if r["source_system"] == "deletion_worker":
                     self.worker_activities.append(r)
 
+    def _unique_account_worker_target(self, case_id: str, reported_at: str) -> Optional[str]:
+        """Return an account resource only for a unique, close workflow-time match.
+
+        Activity results are not proof of state. This uses the activity solely to
+        identify a candidate target for a future verification. If another request
+        or worker event is comparably close, the association is ambiguous and is
+        discarded.
+        """
+        try:
+            reported_dt = datetime.fromisoformat(reported_at.replace("Z", "+00:00"))
+        except (TypeError, ValueError):
+            return None
+
+        window_seconds = 300
+        nearby_requests = []
+        for filename in ("deletion_requests.csv", "sample_deletion_requests.csv"):
+            path = os.path.join(self.dataset_dir, filename)
+            if not os.path.isfile(path):
+                continue
+            with open(path, mode="r", encoding="utf-8") as source:
+                for row in csv.DictReader(source):
+                    try:
+                        request_time = datetime.fromisoformat(row["reported_at"].replace("Z", "+00:00"))
+                    except (KeyError, TypeError, ValueError):
+                        continue
+                    if abs((request_time - reported_dt).total_seconds()) <= window_seconds:
+                        nearby_requests.append(row["case_id"])
+        if nearby_requests != [case_id]:
+            return None
+
+        candidates = []
+        for activity in self.worker_activities:
+            if activity.get("event_type") != "DELETE_RECORD" or activity.get("target_system") != "account_service":
+                continue
+            try:
+                event_time = datetime.fromisoformat(activity["event_time"].replace("Z", "+00:00"))
+            except (KeyError, TypeError, ValueError):
+                continue
+            distance = abs((event_time - reported_dt).total_seconds())
+            if distance <= window_seconds:
+                candidates.append((distance, activity.get("resource_id", "")))
+        candidates = [(distance, resource_id) for distance, resource_id in candidates if resource_id]
+        candidates.sort()
+        if not candidates:
+            return None
+        if len(candidates) > 1 and candidates[1][0] - candidates[0][0] < 60:
+            return None
+
+        # Do not assign one activity to multiple requests with nearby report times.
+        best_distance, best_resource = candidates[0]
+        for filename in ("deletion_requests.csv", "sample_deletion_requests.csv"):
+            path = os.path.join(self.dataset_dir, filename)
+            if not os.path.isfile(path):
+                continue
+            with open(path, mode="r", encoding="utf-8") as source:
+                for row in csv.DictReader(source):
+                    if row["case_id"] == case_id:
+                        continue
+                    try:
+                        other_time = datetime.fromisoformat(row["reported_at"].replace("Z", "+00:00"))
+                    except (KeyError, TypeError, ValueError):
+                        continue
+                    if abs((other_time - reported_dt).total_seconds()) > window_seconds:
+                        continue
+                    if any(
+                        a.get("resource_id") == best_resource
+                        and a.get("event_type") == "DELETE_RECORD"
+                        and a.get("target_system") == "account_service"
+                        and abs((datetime.fromisoformat(a["event_time"].replace("Z", "+00:00")) - other_time).total_seconds()) <= window_seconds
+                        for a in self.worker_activities
+                    ):
+                        return None
+        return best_resource
+
     def is_not_applicable(self, text: str) -> bool:
         text_lower = text.lower()
         non_del_triggers = [
@@ -40,13 +119,27 @@ class RefinedAuditor:
             "leave my profile", "download my account", "invoices for my records",
             "continue using the service", "leave the account as active"
         ]
-        return any(t in text_lower for t in non_del_triggers)
+        explicit_non_deletion = [
+            "not asking for deletion", "not a request to erase", "not asking you to delete",
+            "do not close the account", "don't close the account", "do not delete",
+            "don't delete", "without removing any of my records", "still need the account",
+            "still use it, so please", "information request, not", "only from marketing",
+            "marketing lists only", "stop the promotional emails", "correct it without removing",
+            "resetting the login", "need help resetting", "not asking for erasure",
+        ]
+        if any(trigger in text_lower for trigger in explicit_non_deletion):
+            return True
+        return any(trigger in text_lower for trigger in non_del_triggers)
 
-    def find_evidence_for_case(self, email: str, uid: Optional[str], audit_at_str: str, user_tokens: Set[str]) -> List[str]:
+    def find_evidence_for_case(self, email: str, uid: Optional[str], audit_at_str: str, user_tokens: Optional[Set[str]] = None) -> List[str]:
+        if user_tokens is None:
+            user = self.resolver.resolve_by_email(email)
+            user_tokens = self.resolver.get_all_identifiers(user) if user else {email}
+            if uid:
+                user_tokens.add(uid)
+
         audit_dt = datetime.fromisoformat(audit_at_str.replace("Z", ""))
-        
-        # Check all evidence files where user's identifiers are mentioned
-        user_ev_ids: Dict[str, float] = {}
+        user_ev_ids: Dict[str, datetime] = {}
         for o in self.indexer.all_observations:
             is_match = False
             if o.email and o.email.lower() in [t.lower() for t in user_tokens if "@" in t]:
@@ -58,31 +151,20 @@ class RefinedAuditor:
 
             if is_match:
                 eid = o.evidence_id
-                if eid and eid in self.evidence_files:
-                    cap_str = self.evidence_files[eid]["captured_at"]
+                if eid:
+                    cap_str = self.evidence_files.get(eid, {}).get("captured_at") or next(
+                        (obs.captured_at for obs in self.indexer.all_observations if obs.evidence_id == eid),
+                        "",
+                    )
+                    if not cap_str:
+                        continue
                     cap_dt = datetime.fromisoformat(cap_str.replace("Z", ""))
-                    diff = (audit_dt - cap_dt).total_seconds()
-                    # Captured before or around audit_at (within 2 hours)
-                    if -7200 <= diff:
-                        user_ev_ids[eid] = abs(diff)
+                    if cap_dt <= audit_dt:
+                        user_ev_ids[eid] = cap_dt
 
-        if user_ev_ids:
-            sorted_eids = sorted(user_ev_ids.keys(), key=lambda k: user_ev_ids[k])
-            best_diff = user_ev_ids[sorted_eids[0]]
-            # If multiple evidence files captured around the same time (e.g. replica and export), include both
-            return [e for e, d in user_ev_ids.items() if abs(d - best_diff) < 3600]
-            
-        # Fallback for failover replica (evidence_54) or read replicas
-        min_diff = float("inf")
-        best_candidate = None
-        for eid, info in self.evidence_files.items():
-            cap_dt = datetime.fromisoformat(info["captured_at"].replace("Z", ""))
-            diff = (audit_dt - cap_dt).total_seconds()
-            if 0 <= diff < 86400 * 3:
-                if diff < min_diff:
-                    min_diff = diff
-                    best_candidate = eid
-        return [best_candidate] if best_candidate else []
+        # Return every matching, timely evidence file in chronological order.
+        # The caller lets newer snapshots replace earlier observations of a resource.
+        return sorted(user_ev_ids, key=lambda eid: user_ev_ids[eid])
 
     def audit_case(self, case_id: str, email: str, requested_at: str, reported_status: str, reported_at: str, audit_at: str, request_text: str) -> Tuple[str, List[Dict[str, Any]]]:
         if self.is_not_applicable(request_text):
@@ -109,7 +191,7 @@ class RefinedAuditor:
                         is_match = True
                     
                     if is_match:
-                        case_obs[o.resource_id] = o
+                        case_obs[f"{o.system_id}::{o.resource_id}"] = o
 
         # 3. Security Audit Record:
         # Check if user has an audit_record in case_obs
@@ -118,83 +200,24 @@ class RefinedAuditor:
             # Look in all observations for user's audit_record
             for o in self.indexer.all_observations:
                 if o.category == "SECURITY_AUDIT_LOG" or "audit_record" in o.resource_id:
-                    if (o.user_id and o.user_id in user_tokens) or (o.email and o.email.lower() == email.lower()):
-                        case_obs[o.resource_id] = o
+                    cap = self.evidence_files.get(o.evidence_id, {}).get("captured_at", "")
+                    cap_dt = datetime.fromisoformat(cap.replace("Z", "")) if cap else None
+                    if cap_dt and cap_dt <= datetime.fromisoformat(audit_at.replace("Z", "")) and ((o.user_id and o.user_id in user_tokens) or (o.email and o.email.lower() in {str(t).lower() for t in user_tokens if "@" in str(t)})):
+                        case_obs[f"{o.system_id}::{o.resource_id}"] = o
                         has_audit_rec = True
-                        break
 
-        # 4. Check worker activities around reported_at
-        rep_dt = datetime.fromisoformat(reported_at.replace("Z", ""))
-        has_account = any("account" in rid for rid in case_obs)
-        closest_act = None
-        
-        if not has_account:
-            # Look for DELETE_RECORD on account_service around reported_at
-            target_res_status = ['SUCCESS'] if reported_status == 'SUCCESS' else (['PARTIAL'] if reported_status == 'PARTIAL' else ['FAILED', 'PARTIAL', 'NOT_STARTED'])
-            
-            cand_accs = []
-            for act in self.worker_activities:
-                if act["event_type"] == "DELETE_RECORD" and act["target_system"] == "account_service":
-                    adt = datetime.fromisoformat(act["event_time"].replace("Z", ""))
-                    diff = (adt - rep_dt).total_seconds()
-                    if -7200 <= diff <= 3600:
-                        score = abs(diff)
-                        if act["reported_result"] in target_res_status:
-                            score -= 10000
-                        cand_accs.append((score, act))
-            cand_accs.sort(key=lambda x: x[0])
-            closest_act = cand_accs[0][1] if cand_accs else None
-            
-            if closest_act:
-                acc_res_id = closest_act["resource_id"]
-                primary_ev = evidence_ids[0] if evidence_ids else "evidence_54"
-                
-                # Check if account is actually present in evidence at audit_at
-                is_present = False
-                for o in self.indexer.all_observations:
-                    if o.evidence_id in evidence_ids and o.resource_id == acc_res_id and o.status == "PRESENT":
-                        is_present = True
-                        primary_ev = o.evidence_id
-                        break
-                        
-                case_obs[acc_res_id] = Observation(
-                    evidence_id=primary_ev,
-                    file_path="",
-                    captured_at=audit_at,
-                    system_id="account_service",
-                    resource_id=acc_res_id,
-                    user_id=uid,
-                    email=email,
-                    status="PRESENT" if is_present else "ABSENT",
-                    category="USER_PROFILE"
-                )
-            elif uid and uid.startswith("user_"):
-                num_part = uid.split("_")[1]
-                acc_res_id = f"account_{num_part.zfill(3)}"
-                primary_ev = evidence_ids[0] if evidence_ids else "evidence_54"
-                case_obs[acc_res_id] = Observation(
-                    evidence_id=primary_ev,
-                    file_path="",
-                    captured_at=audit_at,
-                    system_id="account_service",
-                    resource_id=acc_res_id,
-                    user_id=uid,
-                    email=email,
-                    status="ABSENT",
-                    category="USER_PROFILE"
-                )
-
-        # 5. Generate Audit Steps
+        # 4. Generate Audit Steps from participant-visible observations only.
         raw_steps: List[AuditStep] = []
         has_findings = False
 
-        for res_id, obs in sorted(case_obs.items()):
+        for _, obs in sorted(case_obs.items()):
+            res_id = obs.resource_id
             sys_id = obs.system_id
             cat = obs.category
             stat = obs.status
-            ev_id = obs.evidence_id or (evidence_ids[0] if evidence_ids else "")
+            ev_id = obs.evidence_id
 
-            if cat in ["USER_PROFILE", "SEARCH_INDEX_ENTRY", "USER_EXPORT", "SUPPORT_ATTACHMENT"] or "account" in res_id or "search" in res_id or "export" in res_id:
+            if cat in ["USER_PROFILE", "SEARCH_INDEX_ENTRY", "USER_EXPORT", "SUPPORT_ATTACHMENT", "MARKETING_PROFILE"] or "account" in res_id or "search" in res_id or "export" in res_id:
                 if stat == "PRESENT":
                     has_findings = True
                     raw_steps.append(AuditStep(0, Phase.FINDING.value, sys_id, res_id, "REPORT_REMAINING_RECORD", "PRESENT", ev_id))
@@ -258,6 +281,32 @@ class RefinedAuditor:
                 raw_steps.append(AuditStep(0, Phase.VERIFICATION.value, sys_id, res_id, "VERIFY_RECORD_PRESENT", "PRESENT", ev_id))
 
         final_status = DeletionStatus.INCOMPLETE.value if has_findings else DeletionStatus.COMPLETE.value
+
+        # A live search document can retain the primary account resource it was
+        # built from. When that document is a finding, include an explicit
+        # post-remediation check for the linked account resource as well. The
+        # document establishes the relationship only; it does not establish the
+        # account's current state, so this remains an uncited future check.
+        if final_status == DeletionStatus.INCOMPLETE.value:
+            existing_checks = {
+                (step.system_id, step.resource_id)
+                for step in raw_steps
+                if step.phase == Phase.VERIFICATION.value
+            }
+            linked_accounts: Set[str] = set()
+            for obs in case_obs.values():
+                if obs.category != "SEARCH_INDEX_ENTRY" or obs.status != "PRESENT":
+                    continue
+                linked_accounts.update(re.findall(r"\baccount_[0-9]+\b", obs.raw_info or ""))
+            worker_target = self._unique_account_worker_target(case_id, reported_at)
+            if worker_target:
+                linked_accounts.add(worker_target)
+            for resource_id in sorted(linked_accounts):
+                if ("account_service", resource_id) not in existing_checks:
+                    raw_steps.append(AuditStep(
+                        0, Phase.VERIFICATION.value, "account_service", resource_id,
+                        "VERIFY_RECORD_ABSENT", "ABSENT", ""
+                    ))
 
         if final_status == DeletionStatus.COMPLETE.value:
             selected_steps = [s for s in raw_steps if s.phase == Phase.VERIFICATION.value]

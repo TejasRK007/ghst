@@ -9,10 +9,12 @@ import base64
 import requests
 from dotenv import load_dotenv
 
+load_dotenv(os.path.join(os.path.dirname(__file__), "..", ".env"))
 load_dotenv()
 API_KEY = os.getenv("GEMINI_API_KEY")
 
-URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key={API_KEY}"
+MODEL = os.getenv("GEMINI_MODEL", "gemini-flash-latest")
+URL = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent?key={API_KEY}"
 OUTPUT_DIR = "dataset/evidence/images_extracted"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
